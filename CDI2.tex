@@ -1,0 +1,68 @@
+\documentclass{article}
+\title{Resumos de \\ Cálculo Diferencial e Integral II}
+\date{2020}
+\author{João Rocha}
+
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{comment}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools, nccmath}
+\usepackage{geometry}
+\usepackage{graphicx}
+ \geometry{
+ a4paper,
+ total={129mm,170mm},
+ left=23mm,
+ top=23mm,
+ bottom=28mm,
+ right=28mm,
+ }
+
+\begin{document}
+\maketitle
+
+\vspace*{\fill}
+\textbf{AVISO}:\\ 
+Este texto é essencialmente um resumo dos conhecimentos mais essenciais da cadeira de Cálculo II, não tendo portanto o objetivo de entrar por explicações em detalhe dos conceitos abordados. Desse modo, o objetivo principal deste documento é o de consulta, e não o de esclarecimento. No entanto, alguns temas são acompanhados de explicações breves, de forma a relembrar a intuição por trás dos mesmos. 
+\newpage
+
+\section{O espaço $\mathbb{R}^n$}
+\subsection{Funções em $\mathbb{R}^n$}
+A cadeira de Cálculo I centra-se no estudo de funções \textbf{reais de variável real}, isto é funções que fazem correspondências dos reais para os reais.\\
+No entanto, isto revela-se frequentemente insuficente. Cálculo é frequentemente útil para analisar certos sistemas, e estes sistemas podem ter por vezes mais do que um variável "em jogo".\\
+A cadeira de Cálculo II tenta então generalizar o estudo da função para situações em que há mais do que uma variável.\\
+Definimos então o conjunto $\mathbb{R}^n$ como o conjunto dos pontos $x=(x_1, x_2, \cdots, x_n)$, com $x_1, x_2, \cdots , x_n \in \mathbb{R}$, tal como seria definido numa cadeira de Álgebra Linear. Como é de assumir que qualquer aluno a estudar cálculo com várias variáveis está familiarizado com o conceito de $\mathbb{R}^n$ não vamos entrar em mais detalhe/formalidades e assumir que $\mathbb{R}^n$ tem as propriedades axiomáticas como definidas numa cadeira de Álgebra Linear.\\
+O conceito de $\mathbb{R}^n$ permite-nos extender o conceito de função. Uma \textbf{função vetorial de variável vetorial} é qualquer transformação que faz corresponder a cada elemento de um conjunto $D \subset \mathbb{R}^n$ um e um só elemento de $\mathbb{R}^m$ ($m,n \in \mathbb{N}$) (note-se que em Álgebra Linear já se falou de funções - ou transformações - de $\mathbb{R}^n$ em $\mathbb{R}^m$, mas em Cálculo II não nos vamos restringir a funções/transformações lineares).\\
+Observe-se que muito do estudo feito sobre funções só é possível devido ao conceito de limite: a ideia de algo a \textbf{"aproximar-se"} muito de outro algo. Para trabalhar matemáticamente com esta ideia de proximidade, é preciso definir \textbf{distância}. Relembramo-nos então dos seguintes conceitos de AL:
+\begin{itemize}
+	\item O \text{módulo} de um ponto (ou vetor) em $\mathbb{R}^n$ é dado (usualmente) por $||x|| = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}$ em que $x_1, \cdots , x_n$ são as coordenadas de $x$.
+	\item A \textbf{distância} entre $x, y \in \mathbb{R}^n$ é dada por $||x-y||$.
+\end{itemize}
+
+\subsection{Topologia de $\mathbb{R}^n$}
+A noção de distância em $\mathbb{R}^n$ permite-nos extender alguns dos conceitos topológicos dos reais para $\mathbb{R}^n$.\\
+Começamos com um dos conceitos mais fundamentais: o de vizinhança. Definimos uma \textbf{bola} de raio $\epsilon \in \mathbb{R}^+$ e centro $a \in \mathbb{R}^n$ como o conjunto $B_\epsilon(a) = \{ x \in \mathbb{R}^n : ||x-a|| < \epsilon \}$. É evidente que o conceito de bola é uma extensão do conceito de vizinhançaem $\mathbb{R}^n$, pelo que terá um papel muito semelhante a essa estrutura.\\
+Com este conceito, podemos então definir conjuntos de forma semelhande ao feito em CDI1:
+\begin{itemize}
+\item $a$ é um \textbf{ponto interior} de $A$ se existe $r$ tal que $B_r(a) \subset A$ \vspace{-0.8mm}
+\item $a$ é um \textbf{ponto exterior} de $A$ se existe $r$ tal que $B_r(a) \subset \mathbb{R}^n/A$ \vspace{-0.8mm}
+\item $a$ é um \textbf{ponto fronteiriço} de $A$ se não é interior nem exterior a $A$ \vspace{-0.8mm}
+\item $a$ é um \textbf{ponto aderente} a $A$ se para qualquer $r$, $B_r(a) \cap A \neq \emptyset$ \vspace{-0.8mm}
+\end{itemize}
+e chamamos: \vspace{-0.8mm}
+\begin{itemize}
+\item \textbf{Interior} de $A$ ($int \, A$) ao conjunto de pontos interiores de A \vspace{-0.8mm}
+\item \textbf{Exterior} de $A$ ($ext \, A$) ao conjunto de pontos exteriores de A \vspace{-0.8mm}
+\item \textbf{Fronteira} de $A$ ao ($\partial A$) conjunto de pontos fronteirições de A \vspace{-0.8mm}
+\item \textbf{Fecho} ou \textbf{aderência} de $A$ ($\overline{A}$) ao conjunto de pontos aderentes de A ($\overline{A}=int \, A \cup \partial A$) \vspace{-0.8mm}
+\end{itemize}
+Um conjunto $A \in \mathbb{R}$ diz-se: \vspace{-0.8mm}
+\begin{itemize}
+\item \textbf{aberto} se $A= int \, A$ \vspace{-1mm}
+\item \textbf{fechado} se $A= \overline{A}$ ($\mathbb{R}/A$ é aberto ou $\partial A \subset A$) \vspace{-0.8mm}
+\item \textbf{compacto} se é fechado e limitado \vspace{-0.8mm}
+\end{itemize}
+
+\end{document}
