@@ -58,11 +58,30 @@ e chamamos: \vspace{-0.8mm}
 \item \textbf{Fronteira} de $A$ ao ($\partial A$) conjunto de pontos fronteirições de A \vspace{-0.8mm}
 \item \textbf{Fecho} ou \textbf{aderência} de $A$ ($\overline{A}$) ao conjunto de pontos aderentes de A ($\overline{A}=int \, A \cup \partial A$) \vspace{-0.8mm}
 \end{itemize}
+Observe-se que para qualquer $A \subset \mathbb{R}^n$, temos que 
+$int \, A \cup \partial A \cup ext \, A = \mathbb{R}^n$ e $int \, A \cap \partial A \cap ext \, A = \emptyset$.\\
 Um conjunto $A \in \mathbb{R}$ diz-se: \vspace{-0.8mm}
 \begin{itemize}
 \item \textbf{aberto} se $A= int \, A$ \vspace{-1mm}
 \item \textbf{fechado} se $A= \overline{A}$ ($\mathbb{R}/A$ é aberto ou $\partial A \subset A$) \vspace{-0.8mm}
+\item Um conjunto $A$ diz-se \textbf{limitado} se houver $x \in \mathbb{R}$ e $R \in \mathbb{R}^+$ tal que $A \subset B_R(x)$.
 \item \textbf{compacto} se é fechado e limitado \vspace{-0.8mm}
+\end{itemize}
+A interseção/união de uma família de conjuntos abertos/fechados é também aberto/fechado.
+
+\subsection{Sucessões}
+Recorda-se que uma sucessão é essencialmente uma bijeção/correspondência entre um conjunto $\{ u_n: n \in \mathbb{N}^+\}$ e $\mathbb{N}^+$.
+Seja $u_n$ uma sucessão de termos em $\mathbb{R}^n$. Observa-se que cada coordenada de $u_n$ descreve ela própria um sucessão de termos em $\mathbb{R}^n$. Assim, para cada $j \leq m$ damos o nome de \textbf{sucessões coordenadas} às sucessões $(u_{j_n})$ cujo termo de ordem $k$ corresponde à $j$-ésima coordenada de $u_k$.\\
+As opções básicas das sucessões em $\mathbb{R}^n$ definem-se de forma óbvia tendo em conta a soma vetorial e das sucessões coordenadas em $\mathbb{R}$.\\
+Diz-se que uma sucessão $(u_n) \subset \mathbb{R}^n$ tende/converge para $u \in \mathbb{R}^n$ (e escreve-se $u_n \to u$) se e só se, para qualquer $\epsilon \in \mathbb{R}^+$ existe $p \in \mathbb{N}^+$ tal que $u_n \in B_\epsilon(u)$ para todo o $n>p$. Analogamente, vemos que esta definição é equivalente a verificar se a sucessão $d_n = || u_n - u ||$ é infinitesimal. Uma sucessão que convirja para $u \in \mathbb{R}^n$ diz-se convergente.\\
+Note-se que as definições a cima enunciadas de convergência são pouco práticas. De facto, é bastante mais prático usar o seguinte facto:\\
+Uma sucessão $(u_n)$ converge para $a = (a_1, a_2, \cdots , a_n) \in \mathbb{R}^n$ se e só se as sucessões coordenadas $u_{j_n}$ tendem para $a_j$ para todo o $j \in \{ 1,2, \cdots , n \}$. É então fácil verificar que o limite de uma sucessão em $\mathbb{R}^n$ é único (se existir).\\
+Observe-se que qualquer sucessão de termos em $X \in \mathbb{R}^n$ tem limite na aderência de $X$.\\
+Agora, mais uma vez, é fácil determinar os resultados esperados sobre operações com limites, tendo em conta a forma como estão definidas a convergência em $\mathbb{R}^n$ e as operações sobre limites em $\mathbb{R}$.\\
+Diz-se ainda que uma sucessão é limitada se e só se o conjunto dos seus termos também o for. Tendo em conta os resultados a cima, é fácil concluir que uma sucessão é limitada se e só se as suas sucessões coordenadas também o forem. Verificam-se as seguintes propriedades:
+\begin{itemize}
+	\item Qualquer sucessão convergente é limitada.
+	\item \textbf{Teorema de Bolzano-Weiestrass}: Qualquer sucessão limitada tem sub-sucessões convergentes.
 \end{itemize}
 
 \end{document}
