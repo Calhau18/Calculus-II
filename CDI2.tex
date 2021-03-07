@@ -84,4 +84,14 @@ Diz-se ainda que uma sucessão é limitada se e só se o conjunto dos seus termo
 	\item \textbf{Teorema de Bolzano-Weiestrass}: Qualquer sucessão limitada tem sub-sucessões convergentes.
 \end{itemize}
 
+\subsection{Continuidade}
+Em Cálculo I introduzimos continuidade de acordo com a seguinte ideia: uma função $f$ é contínua num ponto $a$ se conseguirmos que todos os pontos de $f$ estão tão perto quanto quisermos de $f(a)$, se considerarmos apenas pontos suficientemente perto de $a$. Tendo em conta a noção de distância em $\mathbb{R}^n$, definimos continuidade da seguinte forma:\\
+Uma função $f: D \subset \mathbb{R}^n \to \mathbb{R}^m$ diz-se contínua num ponto $a \in \mathbb{R}^n$ se para qualquer bola de raio $\delta \in \mathbb{R}^+$ centrada em $f(a)$, existe uma bola de raio $\epsilon \in \mathbb{R}^+$ centrada em $a$ tal que $x \in B_\epsilon(a) \, \cap \, D \Rightarrow f(x) \in B_\delta(f(a))$ ($\forall \delta \in \mathbb{R}^+, \, \exists \epsilon \in \mathbb{R}^+ : ||x-a|| < \epsilon \vee x \in D \Rightarrow ||f(x)-f(a)|| < \delta$).\\
+Tal como em $\mathbb{R}$ (definição de Heine), podemos definir continuidade através de sucessões. Uma funçao $f : D \subset \mathbb{R}^n \to \mathbb{R}^m$ é contínua em $a \in D$ se e só se para qualquer sucessão $(u_n)$ de termos em $D$ convergente para $a$ se tem que $f(u_k) \to f(a)$.\\
+Mais uma vez, podemos obter resultados semelhantes aos elaborados em CDI-I para as operações sobre funções contínuas e continuidade das funções resultantes.\\
+Tal como nas sucessões, por vezes o estudo da continuidade de uma função torna-se mais simples se considerarmos as \textbf{funções coordenadas}. Seja uma função $f: D \subset \mathbb{R}^n \to \mathbb{R}^m$. Se considerarmos apenas o que $f$ faz à $k$-ésima coordenada dos objetos de $D$, obtemos uma função escalar ($f_k(x)$, a qual designamos de $k$-ésima função coordenada de $f$). Tal função $f$ será contínua num ponto $a \in D$ se e só se as $m$ funções coordenadas também o forem.\\
+
+\subsection{Limites}
+
+
 \end{document}
