@@ -32,19 +32,19 @@ Este texto é essencialmente um resumo dos conhecimentos mais essenciais da cade
 \subsection{Funções em $\mathbb{R}^n$}
 A cadeira de Cálculo I centra-se no estudo de funções \textbf{reais de variável real}, isto é funções que fazem correspondências dos reais para os reais.\\
 No entanto, isto revela-se frequentemente insuficente. Cálculo é frequentemente útil para analisar certos sistemas, e estes sistemas podem ter por vezes mais do que um variável "em jogo".\\
-A cadeira de Cálculo II tenta então generalizar o estudo da função para situações em que há mais do que uma variável.\\
+A cadeira de Cálculo II tenta então generalizar o estudo da função para situações em que há mais do que uma variável em consideração.\\
 Definimos então o conjunto $\mathbb{R}^n$ como o conjunto dos pontos $x=(x_1, x_2, \cdots, x_n)$, com $x_1, x_2, \cdots , x_n \in \mathbb{R}$, tal como seria definido numa cadeira de Álgebra Linear. Como é de assumir que qualquer aluno a estudar cálculo com várias variáveis está familiarizado com o conceito de $\mathbb{R}^n$ não vamos entrar em mais detalhe/formalidades e assumir que $\mathbb{R}^n$ tem as propriedades axiomáticas como definidas numa cadeira de Álgebra Linear.\\
-O conceito de $\mathbb{R}^n$ permite-nos extender o conceito de função. Uma \textbf{função vetorial de variável vetorial} é qualquer transformação que faz corresponder a cada elemento de um conjunto $D \subset \mathbb{R}^n$ um e um só elemento de $\mathbb{R}^m$ ($m,n \in \mathbb{N}$) (note-se que em Álgebra Linear já se falou de funções - ou transformações - de $\mathbb{R}^n$ em $\mathbb{R}^m$, mas em Cálculo II não nos vamos restringir a funções/transformações lineares).\\
-Observe-se que muito do estudo feito sobre funções só é possível devido ao conceito de limite: a ideia de algo a \textbf{"aproximar-se"} muito de outro algo. Para trabalhar matemáticamente com esta ideia de proximidade, é preciso definir \textbf{distância}. Relembramo-nos então dos seguintes conceitos de AL:
+Definimos uma \textbf{função vetorial de variável vetorial} como qualquer transformação que faz corresponder a cada elemento de um conjunto $D \subset \mathbb{R}^n$ um e um só elemento de $\mathbb{R}^m$ ($m,n \in \mathbb{N}$).\\
+Para realizar o estude de funções vetoriais, é extremamente importante a noção de limite. Como esta noção depende da noção de distância, começamos por definir este conceito:
 \begin{itemize}
 	\item O \text{módulo} de um ponto (ou vetor) em $\mathbb{R}^n$ é dado (usualmente) por $||x|| = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}$ em que $x_1, \cdots , x_n$ são as coordenadas de $x$.
 	\item A \textbf{distância} entre $x, y \in \mathbb{R}^n$ é dada por $||x-y||$.
 \end{itemize}
 
 \subsection{Topologia de $\mathbb{R}^n$}
-A noção de distância em $\mathbb{R}^n$ permite-nos extender alguns dos conceitos topológicos dos reais para $\mathbb{R}^n$.\\
-Começamos com um dos conceitos mais fundamentais: o de vizinhança. Definimos uma \textbf{bola} de raio $\epsilon \in \mathbb{R}^+$ e centro $a \in \mathbb{R}^n$ como o conjunto $B_\epsilon(a) = \{ x \in \mathbb{R}^n : ||x-a|| < \epsilon \}$. É evidente que o conceito de bola é uma extensão do conceito de vizinhançaem $\mathbb{R}^n$, pelo que terá um papel muito semelhante a essa estrutura.\\
-Com este conceito, podemos então definir conjuntos de forma semelhande ao feito em CDI1:
+A noção de distância em $\mathbb{R}^n$ permite-nos extender alguns conceitos a $\mathbb{R}^n$ que permitem definir a estrutura topológica deste congunto.\\
+Começamos com um dos conceitos mais fundamentais: o de vizinhança. Definimos uma \textbf{bola} de raio $\epsilon \in \mathbb{R}^+$ e centro $a \in \mathbb{R}^n$ como o conjunto $B_\epsilon(a) = \{ x \in \mathbb{R}^n : ||x-a|| < \epsilon \}$. É evidente que o conceito de bola é uma extensão do conceito de vizinhançaem $\mathbb{R}^n$, que não passa de uma bola uni-dimensional.\\
+Com este conceito, podemos então classificar conjuntos de forma semelhande ao feito em CDI1:
 \begin{itemize}
 \item $a$ é um \textbf{ponto interior} de $A$ se existe $r$ tal que $B_r(a) \subset A$ \vspace{-0.8mm}
 \item $a$ é um \textbf{ponto exterior} de $A$ se existe $r$ tal que $B_r(a) \subset \mathbb{R}^n/A$ \vspace{-0.8mm}
@@ -72,12 +72,10 @@ A interseção/união de uma família de conjuntos abertos/fechados é também a
 \subsection{Sucessões}
 Recorda-se que uma sucessão é essencialmente uma bijeção/correspondência entre um conjunto $\{ u_n: n \in \mathbb{N}^+\}$ e $\mathbb{N}^+$.
 Seja $u_n$ uma sucessão de termos em $\mathbb{R}^n$. Observa-se que cada coordenada de $u_n$ descreve ela própria um sucessão de termos em $\mathbb{R}^n$. Assim, para cada $j \leq m$ damos o nome de \textbf{sucessões coordenadas} às sucessões $(u_{j_n})$ cujo termo de ordem $k$ corresponde à $j$-ésima coordenada de $u_k$.\\
-As opções básicas das sucessões em $\mathbb{R}^n$ definem-se de forma óbvia tendo em conta a soma vetorial e das sucessões coordenadas em $\mathbb{R}$.\\
-Diz-se que uma sucessão $(u_n) \subset \mathbb{R}^n$ tende/converge para $u \in \mathbb{R}^n$ (e escreve-se $u_n \to u$) se e só se, para qualquer $\epsilon \in \mathbb{R}^+$ existe $p \in \mathbb{N}^+$ tal que $u_n \in B_\epsilon(u)$ para todo o $n>p$. Analogamente, vemos que esta definição é equivalente a verificar se a sucessão $d_n = || u_n - u ||$ é infinitesimal. Uma sucessão que convirja para $u \in \mathbb{R}^n$ diz-se convergente.\\
+Diz-se que uma sucessão $(u_n) \subset \mathbb{R}^n$ tende/converge para $u \in \mathbb{R}^n$ (e escreve-se $u_n \to u$) se e só se, para qualquer $\epsilon \in \mathbb{R}^+$ existe $p \in \mathbb{N}^+$ tal que $u_n \in B_\epsilon(u)$ para todo o $n>p$. É fácil de ver que esta definição é equivalente a verificar se a sucessão $d_n = || u_n - u ||$ é infinitesimal. Uma sucessão que convirja para $u \in \mathbb{R}^n$ diz-se \textbf{convergente}.\\
 Note-se que as definições a cima enunciadas de convergência são pouco práticas. De facto, é bastante mais prático usar o seguinte facto:\\
 Uma sucessão $(u_n)$ converge para $a = (a_1, a_2, \cdots , a_n) \in \mathbb{R}^n$ se e só se as sucessões coordenadas $u_{j_n}$ tendem para $a_j$ para todo o $j \in \{ 1,2, \cdots , n \}$. É então fácil verificar que o limite de uma sucessão em $\mathbb{R}^n$ é único (se existir).\\
-Observe-se que qualquer sucessão de termos em $X \in \mathbb{R}^n$ tem limite na aderência de $X$.\\
-Agora, mais uma vez, é fácil determinar os resultados esperados sobre operações com limites, tendo em conta a forma como estão definidas a convergência em $\mathbb{R}^n$ e as operações sobre limites em $\mathbb{R}$.\\
+Observe-se que qualquer sucessão de termos em $X \in \mathbb{R}^n$ tem limite na aderência de $X$. Então um conjunto é fechado se e só se qualquer sucessão de termos nesse conjunto tiver limite dentro do conjunto.\\
 Diz-se ainda que uma sucessão é limitada se e só se o conjunto dos seus termos também o for. Tendo em conta os resultados a cima, é fácil concluir que uma sucessão é limitada se e só se as suas sucessões coordenadas também o forem. Verificam-se as seguintes propriedades:
 \begin{itemize}
 	\item Qualquer sucessão convergente é limitada.
@@ -85,13 +83,60 @@ Diz-se ainda que uma sucessão é limitada se e só se o conjunto dos seus termo
 \end{itemize}
 
 \subsection{Continuidade}
-Em Cálculo I introduzimos continuidade de acordo com a seguinte ideia: uma função $f$ é contínua num ponto $a$ se conseguirmos que todos os pontos de $f$ estão tão perto quanto quisermos de $f(a)$, se considerarmos apenas pontos suficientemente perto de $a$. Tendo em conta a noção de distância em $\mathbb{R}^n$, definimos continuidade da seguinte forma:\\
-Uma função $f: D \subset \mathbb{R}^n \to \mathbb{R}^m$ diz-se contínua num ponto $a \in \mathbb{R}^n$ se para qualquer bola de raio $\delta \in \mathbb{R}^+$ centrada em $f(a)$, existe uma bola de raio $\epsilon \in \mathbb{R}^+$ centrada em $a$ tal que $x \in B_\epsilon(a) \, \cap \, D \Rightarrow f(x) \in B_\delta(f(a))$ ($\forall \delta \in \mathbb{R}^+, \, \exists \epsilon \in \mathbb{R}^+ : ||x-a|| < \epsilon \vee x \in D \Rightarrow ||f(x)-f(a)|| < \delta$).\\
+Uma função $f: D \subset \mathbb{R}^n \to \mathbb{R}^m$ diz-se contínua num ponto $a \in \mathbb{R}^n$ se para qualquer bola de raio $\delta \in \mathbb{R}^+$ centrada em $f(a)$, existe uma bola de raio $\epsilon \in \mathbb{R}^+$ centrada em $a$ tal que 
+$$x \in B_\epsilon(a) \, \cap \, D \Rightarrow f(x) \in B_\delta(f(a)) \quad (\forall \delta \in \mathbb{R}^+, \, \exists \epsilon \in \mathbb{R}^+ : ||x-a|| < \epsilon \vee x \in D \Rightarrow ||f(x)-f(a)|| < \delta)$$
 Tal como em $\mathbb{R}$ (definição de Heine), podemos definir continuidade através de sucessões. Uma funçao $f : D \subset \mathbb{R}^n \to \mathbb{R}^m$ é contínua em $a \in D$ se e só se para qualquer sucessão $(u_n)$ de termos em $D$ convergente para $a$ se tem que $f(u_k) \to f(a)$.\\
-Mais uma vez, podemos obter resultados semelhantes aos elaborados em CDI-I para as operações sobre funções contínuas e continuidade das funções resultantes.\\
-Tal como nas sucessões, por vezes o estudo da continuidade de uma função torna-se mais simples se considerarmos as \textbf{funções coordenadas}. Seja uma função $f: D \subset \mathbb{R}^n \to \mathbb{R}^m$. Se considerarmos apenas o que $f$ faz à $k$-ésima coordenada dos objetos de $D$, obtemos uma função escalar ($f_k(x)$, a qual designamos de $k$-ésima função coordenada de $f$). Tal função $f$ será contínua num ponto $a \in D$ se e só se as $m$ funções coordenadas também o forem.\\
+Tal como nas sucessões, por vezes o estudo da continuidade de uma função torna-se mais simples se considerarmos as \textbf{funções coordenadas}. Seja uma função $f: D \subset \mathbb{R}^n \to \mathbb{R}^m$. Se considerarmos apenas o que $f$ faz à $k$-ésima coordenada dos objetos de $D$, obtemos uma função $f_k(x)$, de domínio em $\mathbb{R}$ a qual designamos de $k$-ésima função coordenada de $f$. Tal função $f$ será contínua num ponto $a \in D$ se e só se as $m$ funções coordenadas também o forem nas respetivas corrdenadas.\\
+Propriedades de funções contínuas:
+Se $f,g: \mathbb{R}^n \to \mathbb{R}^m$ forem contínuas em $a \in \mathbb{R}$ e $h: \mathbb{R}^m \to \mathbb{R}^l$ for contínua em $f(a) \in \mathbb{R}$, e $\alpha \in \mathbb{R}$ então:
+\begin{itemize}
+	\item $f \pm g$, $f \cdot g$, $||f||$, $\alpha f$, $f/g$ com $g(x) \neq 0$, são contínuas em $a$;
+	\item $(h \circ f)$ é contínua em $a$;
+\end{itemize}
+Finalmente, introduzimos a noção de conexividade. Dois conjuntos $A,B \subset \mathbb{R}^n$ dizem-se \textbf{separados} se 
+$$
+A \cap \overline{B} = \overline{A} \cap B = \emptyset
+$$
+Um conjunto $C$ diz-se \textbf{conexo} se não houverem $A,B \subset C$ não-vazios tais que $A$ e $B$ são separados.\\
+Teoremas sobre funções contínuas:
+\begin{itemize}
+	\item Uma função contínua transforma conjuntos compactos em conjuntos compactos;
+	\item \textbf{Teorema de Weiestrass}: Uma função escalar contínua de domínio compacto em $\mathbb{R}^n$ tem máximo e mínimo;
+	\item Uma função contínua transforma conjuntos conexos em conjuntos conexos;
+	\item \textbf{Teorema do Valor Intermédio}: Seja $f : D \subset \mathbb{R}^n \to \mathbb{R}$ contínua de domínio conexo. Se $a,b \in f(D)$ com $b<a$ então $[a,b] \subset f(D)$.
+\end{itemize}
 
 \subsection{Limites}
+Tal como em CDI-I, definimos o \textbf{prolongamento contínuo} de uma função $f: D \subset \mathbb{R}^n \to \mathbb{R}^m$ como a função contínua $\tilde{f}: D^* \subset \overline{D} \to \mathbb{R}^n$ tal que $\tilde{f}(x) = f(x)$ para $x \in D$ e $D^*$ corresponde ao conjunto dos pontos em $\overline{D}$ tais que $f$ é prolongável por continuidade nesses pontos.\\
+Então, definimos o limite de $f$ em $a \in \mathbb{R}$ como o valor do prolongamento contínuo de $f$ nesse ponto.
+$$
+\lim_{x \to a} f(x) = \tilde{f}(x)
+$$
+O limite de $f$ só existe nos pontos prolongáveis por continuidade.\\
+Equivalentemente temos que para uma função $f: D \subset \mathbb{R}^n \to \mathbb{R}^m$:
+$$
+\lim_{x \to a} f(x) = b
+$$
+se e só se
+\begin{itemize}
+	\item Para qualquer sucessão de termos em $D$ tal que $u_n \to a$ se verifica que $f(u_n) \to f(a)$;
+	\item $\forall_{\delta \in \mathbb{R}^+}, \exists_{\epsilon \in \mathbb{R}^+}: x \in B_\epsilon(a) \cap D \Rightarrow f(x) \in B_\delta(b)$.
+\end{itemize}
+Note-se que para um limite existir num ponto $a$, este tem de ser igual em todas as curvas que passam por esse ponto. Nomeadamente, o limite de uma função em $a$ só pode existir se o limite existir e for igual segundo todas as retas por $a$ (note-se que o limite segundo uma reta é um limite em $\mathbb{R}$). A estes limites (segundo retas) dá-se o nome de \textbf{limites direcionais} segundo uma reta/vetor.
+No entanto, e como é impossível verificar o limite de uma função segundo todas as curvas que passam por um ponto, é necessário um método para calcular um limite.\\
+\textbf{Método das funções enquadradas}:\\
+Sejam $f,g,h: \mathbb{R}^n \to \mathbb{R}^m$ definidas em $B_r(a)$ para $a \in \mathbb{R}^n, r \in \mathbb{R}^+$. Então:
+$$
+f(x) \geq g(x) \geq h(x) \quad \forall_{x \in B_r(a)} \Rightarrow \lim_{x \to a} f(x) \geq \lim_{x \to a} g(x) \geq \lim_{x \to a} h(x) 
+$$
+e nomeadamente, se $\lim_{x \to a} f(x) = \lim_{x \to a} h(x) = b$ temos que $\lim_{x \to a} g(x) = b$.
 
+\subsection{Diferenciabilidade}
+Relembre-se que em Cálculo I definimos derivada de uma função $f$ num ponto $a \in \mathbb{R}$ como sendo o limite do quociente $$ \frac{f(a+h)-f(a)}{h} $$ quando $h \to 0$. Note-se que esta definição depende de uma operação que não está definida em $\mathbb{R}^n$: o quociente. No entando, apenas com uma simples manipulação algébrica obtemos o seguinte:
+\begin{gather*}
+f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h} \Leftrightarrow \lim_{h \to 0} \frac{f(a+h)-f(a)-hf'(a)}{h} = 0 \Leftrightarrow \\ \Leftrightarrow f(a+h)-f(a)-hf'(a) = o(h) \Leftrightarrow hf'(a) + o(h) = f(a+h)-f(a)
+\end{gather*}
+em que $o(h)$ é uma função tal que $\frac{o(h)}{h}$ tende para $0$ quando $h \to 0$. Note-se que esta manipulação algébrica na verdade não eliminou o limite, apenas o "empurrou" para o $o(h)$. No entanto, aqui podemo-nos servir do facto que, em $\mathbb{R}^n$, temos que $h \to 0 \Leftrightarrow ||h \to 0||$. Com este truque, podemos então definir diferenciabilidade num ponto:\\
+Uma função $f : D \subset \mathbb{R}^n \to \mathbb{R}^m$ é diferenciável em $a \in D$ se e só se existe uma transformação linear $o(h)$ cujo quociente $\frac{o(h)}{||h||}$ tende para 0 quando $h \to 0$.
 
 \end{document}
