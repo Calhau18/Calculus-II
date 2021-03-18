@@ -132,11 +132,50 @@ $$
 e nomeadamente, se $\lim_{x \to a} f(x) = \lim_{x \to a} h(x) = b$ temos que $\lim_{x \to a} g(x) = b$.
 
 \subsection{Diferenciabilidade}
-Relembre-se que em Cálculo I definimos derivada de uma função $f$ num ponto $a \in \mathbb{R}$ como sendo o limite do quociente $$ \frac{f(a+h)-f(a)}{h} $$ quando $h \to 0$. Note-se que esta definição depende de uma operação que não está definida em $\mathbb{R}^n$: o quociente. No entando, apenas com uma simples manipulação algébrica obtemos o seguinte:
-\begin{gather*}
-f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h} \Leftrightarrow \lim_{h \to 0} \frac{f(a+h)-f(a)-hf'(a)}{h} = 0 \Leftrightarrow \\ \Leftrightarrow f(a+h)-f(a)-hf'(a) = o(h) \Leftrightarrow hf'(a) + o(h) = f(a+h)-f(a)
-\end{gather*}
-em que $o(h)$ é uma função tal que $\frac{o(h)}{h}$ tende para $0$ quando $h \to 0$. Note-se que esta manipulação algébrica na verdade não eliminou o limite, apenas o "empurrou" para o $o(h)$. No entanto, aqui podemo-nos servir do facto que, em $\mathbb{R}^n$, temos que $h \to 0 \Leftrightarrow ||h \to 0||$. Com este truque, podemos então definir diferenciabilidade num ponto:\\
-Uma função $f : D \subset \mathbb{R}^n \to \mathbb{R}^m$ é diferenciável em $a \in D$ se e só se existe uma transformação linear $o(h)$ cujo quociente $\frac{o(h)}{||h||}$ tende para 0 quando $h \to 0$.
+Vimos em CDI-I que, entre outras, uma possível definição de derivada de uma função $f$ num ponto $a$ ($f'(a)$) é tal que 
+$$
+f(x) = f(a) + f'(a)(x-a) + r(x)
+$$
+em que $r(x)$ é uma função resto tal que $\frac{r(x)}{x-a} \to 0$ quando $x \to a$.\\
+Note-se que a função $g(x) = f(a) + f'(a)(x-a)$ é uma função afim. De facto, esta é a melhor aproximação afim da função $f$.\\ 
+Definimos então a derivada de uma função $f$ num ponto $a$ como a transformação linear $Df(a)$ que melhor aproxima $f$ na vizinhança de $a$. Note-se que $f$ vai então ser diferenciável se e só se esta transformação linear existir. Nesse caso, temos que:
+$$
+f(x) = f(a) + Df(a)(x-a) + r(x)
+$$
+Note-se que isto significa que a função $g(x) = f(a) + Df(a)(x-a)$ será o hiper-plano tangente á função $f$ no ponto $a$ (nomeadamente, para funções de domínio em $\mathbb{R}$, o hiper-plano é uma reta - a reta tangente).\\
+Como qualquer transformação linear, $Df(a)$ pode ser representado por uma matriz. Se $f: \mathbb{R}^n \to \mathbb{R}^m$, $Df(a)$ vai ser representado por uma matriz $m \times n$, a qual se dá o nome de \textbf{matriz Jacobiana}.\\
+Para construir a matriz Jacobiana, vemos o que esta faz aos vetores canónicos. Considere-se então $e_k$, o $k$-ésimo vetor canónico de $\mathbb{R}^n$. Vemos que:
+$$
+f(a + te_k) = f(a) + Df(a)(te_k) + r(te_k) \Leftrightarrow
+$$
+$$
+Df(a)e_k = \lim_{t \to 0} \frac{f(a + te_k)-f(a)}{t}
+$$
+De forma que a matriz Jacobiana será constituída por $n$ vetores coluna dados pelo limite a cima. A este limite dá-se o nome de \textbf{derivada parcial} de $f$ em $a$, em ordem à variável $x_k$. Observando que o limite em cima origina um vetor com $m$ coordenadas, correspondentes aos limites
+$$
+\lim_{t \to 0} \frac{f_j(a + te_k)-f_j(a)}{t}
+$$
+em que $f_j$ representa uma das $m$ funções coordenadas de $f$, obtemos então a matriz:\\
+\begin{center}
+$Df(a) = $
+$\begin{bmatrix}
+	\frac{\partial f_1}{\partial x_1}(a) & \frac{\partial f_1}{\partial x_2}(a) & \cdots & 	\frac{\partial f_1}{\partial x_n}(a) \\
+	\\
+	\frac{\partial f_2}{\partial x_1}(a) & \frac{\partial f_2}{\partial x_2}(a) & \cdots & 	\frac{\partial f_2}{\partial x_n}(a) \\
+	\\
+	\cdots & \cdots & \cdots & \cdots \\
+	\\
+	\frac{\partial f_m}{\partial x_1}(a) & \frac{\partial f_m}{\partial x_2}(a) & \cdots & 	\frac{\partial f_m}{\partial x_n}(a) \\
+\end{bmatrix}$
+\end{center}
+A noção de derivada parcial pode ser generalizada para vetores que não os canónicos. Define-se \textbf{derivada direcional} segundo um vetor $v$ (caso exista) como:
+$$
+\frac{\partial f}{\partial v}(a) = \frac{\partial}{\partial t} f(a+tv) \Big|_{t=0} = \lim_{t \to 0} \frac{f(a+tv)-f(a)}{t}
+$$
+A derivada segundo qualquer vetor $v$ pode no entanto ser obtida por meio da matriz Jacobiana. Para uma função $f: D \subset \mathbb{R}^n \to \mathbb{R}^m$ diferenciável em $a$, temos que, para qualquer $v \in \mathbb{R}^n$:
+$$
+\frac{\partial f}{\partial v}(a) = Df(a) \cdot v
+$$
+($\frac{\partial f}{\partial v}(a)$ é a imagem de $v$ por $Df(a)$).
 
 \end{document}
