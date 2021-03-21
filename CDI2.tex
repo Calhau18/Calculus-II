@@ -131,7 +131,8 @@ f(x) \geq g(x) \geq h(x) \quad \forall_{x \in B_r(a)} \Rightarrow \lim_{x \to a}
 $$
 e nomeadamente, se $\lim_{x \to a} f(x) = \lim_{x \to a} h(x) = b$ temos que $\lim_{x \to a} g(x) = b$.
 
-\subsection{Diferenciabilidade}
+\section{Diferenciabilidade}
+\subsection{A Derivada}
 Vimos em CDI-I que, entre outras, uma possível definição de derivada de uma função $f$ num ponto $a$ ($f'(a)$) é tal que 
 $$
 f(x) = f(a) + f'(a)(x-a) + r(x)
@@ -151,7 +152,7 @@ $$
 $$
 Df(a)e_k = \lim_{t \to 0} \frac{f(a + te_k)-f(a)}{t}
 $$
-De forma que a matriz Jacobiana será constituída por $n$ vetores coluna dados pelo limite a cima. A este limite dá-se o nome de \textbf{derivada parcial} de $f$ em $a$, em ordem à variável $x_k$. Observando que o limite em cima origina um vetor com $m$ coordenadas, correspondentes aos limites
+De forma que a matriz Jacobiana será constituída por $n$ vetores coluna dados pelo limite a cima, avaliado para cada vetor canónico. A este limite dá-se o nome de \textbf{derivada parcial} de $f$ em $a$, em ordem à variável $x_k$. Observando que o limite em cima origina um vetor com $m$ coordenadas, correspondentes aos limites
 $$
 \lim_{t \to 0} \frac{f_j(a + te_k)-f_j(a)}{t}
 $$
@@ -176,6 +177,66 @@ A derivada segundo qualquer vetor $v$ pode no entanto ser obtida por meio da mat
 $$
 \frac{\partial f}{\partial v}(a) = Df(a) \cdot v
 $$
-($\frac{\partial f}{\partial v}(a)$ é a imagem de $v$ por $Df(a)$).
+($\frac{\partial f}{\partial v}(a)$ é a imagem de $v$ por $Df(a)$).\\
+Então,
+$$
+\frac{\partial f}{\partial v}(a) = Df(a)\cdot v = \sum_{j=1}^n v_j \cdot Df(a)e_j = \sum_{j=1}^n v_j \frac{\partial f}{\partial x_j} (a)
+$$
+\subsection{Propriedades da derivada}
+\begin{itemize}
+	\item $f$ é diferenciável em $a$ se e só se todas as suas funções coordenadas o forem;
+	\item Qualquer função diferenciável é contínua;
+	\item A existência de todas as derivadas parciais num ponto não é condição suficiente para a existência de derivada nesse ponto; 
+	\item A existência e continuidade de todas as derivadas num ponto é condição suficiente para a existência de derivada nesse ponto. Ou seja, qualquer função de derivada contínua é diferenciável.
+	\item A combinação linear de funções $f$ e $g$ diferenciáveis num ponto $a$ é diferenciável e é dada por $$ D(\alpha f+\beta g)(a)=\alpha Df(a)+\beta Dg(a)$$
+	\item O produto de funções $f$ e $g$ diferenciáveis num ponto $a$ é diferenciável e é dada por $$ D(fg)(a)=Df(a)g(a)+f(a)Dg(a)$$
+	\item O quociente de funções $f$ e $g$ diferenciáveis num ponto $a$ é diferenciável e é dada por $$ D\left(\frac{f}{g} \right)(a)=\frac{Df(a)g(a)-f(a)Dg(a)}{g(a)^2} $$
+	\item Sejam $D \subset \mathbb{R}^n$ e $E \subset \mathbb{R}^m$ abertos tal que $f: D \to \mathbb{R}^m$ e $g: E \to \mathbb{R}^k$ são diferenciáveis e $f(D) \subset E$. Então $g \circ f: D \to \mathbb{R}^k$ é diferenciável e $$ D(g \circ f)(a) = Dg(f(a)) \cdot Df(a) $$
+\end{itemize}
+Atentemos nesta última propriedade. A derivada da composição de funções é dada por um produto matricial. Esta propriedade dá-nos uma forma de calcular derivadas parciais das funções coordenadas da função composta em função das derivadas parciais das funções que a compôem. Dadas funções $f: D \to \mathbb{R}^m$ e $g: E \to \mathbb{R}^k$ com $D \subset \mathbb{R}^n$ e $E \subset \mathbb{R}^m$ abertos e $f(D) \subset E$, temos que
+$$
+\frac{\partial (g \circ f)_i }{\partial x_j}(x) = \left[ D(g \circ f)(x) \right]_{i,j} = \sum_{l=1}^m \left[ Dg(f(x)) \right]_{i,l} \left[ Df(x) \right]_{l,j} = \sum_{l=1}^m \frac{\partial g_i}{\partial y_l}(f(x)) \cdot \frac{\partial f_l}{\partial x_j}(x)
+$$
+Esta regra é conhecida por \textbf{regra da cadeia}.\\
+
+\subsection{Gradiente}
+Concentrando-nos agora em campos escalares, vemos que para uma função $f: D \subset \mathbb{R}^n \to \mathbb{R}$, a matriz jacobiana tem apenas uma linha. Desta forma, ela pode ser representada na forma vetorial. Ao vetor
+$$
+\nabla f(a) = \left( \frac{\partial f_1}{\partial x_1}(a) \quad \frac{\partial f_1}{\partial x_2}(a) \quad \cdots \quad \frac{\partial f_1}{\partial x_n}(a) \right)
+$$
+dá-se o nome de \textbf{gradiente} de $f$ em $a$. Desta forma, o gradiente de uma função escalar é um campo vetorial $\nabla f: D \subset \mathbb{R}^n \to \mathbb{R}^n$ que a cada ponto $x \in D$ faz corresponder o vetor $\nabla f(x)$.\\
+Neste caso, vemos que a derivada duma função escalar $f$ num ponto $a$ segundo um vetor $v$ é dada pelo produto vetorial:
+$$
+\frac{\partial f}{\partial v}(a) = Df(a) \cdot v = \nabla f(a) \cdot v = || \nabla f(a) || \cdot ||v|| \cdot \cos \theta
+$$
+em que $\theta$ é o ângulo entre o vetor $v$ e o vetor $\nabla f(a)$. Como este valor é máximo quando $\theta = 0$, temos que o vetor gradiente dá-nos a direção e sentido de crescimento máximo de $f$ (em $a$).\\
+Observe-se ainda que se $v \perp \nabla f(a)$ então a derivada de $f$ em $a$ segundo $v$ é nula.\\
+Note-se que com os vetores linha da matriz jacobiana de uma função $f: D \subset \mathbb{R}^n \to \mathbb{R}^m$ correspondem aos gradientes das funções coordenadas de $f$:
+\begin{center}$
+Df(a) =
+\begin{bmatrix}
+\nabla f_1(a) \\
+\nabla f_2(a) \\
+\cdots \\
+\nabla f_n(a) \\
+\end{bmatrix}$
+\end{center}
+
+\subsection{Linhas e Conjuntos de Nível}
+Dá-se o nome de \textbf{caminho} ou \textbf{trajetória} a uma função contínua $\gamma: I \to \mathbb{R}^n$ em que $I \subset \mathbb{R}$ é um intervalo. Ao conjunto de chegada de dá-se o nome de \textbf{linha}.\\
+Define-se um \textbf{vetor tangente} a um caminho $\gamma$ de classe $C^1$como o vetor dado pelo limite
+$$
+\gamma '(t) = \lim_{h \to 0} \frac{\gamma(t+h)-\gamma(t)}{h}
+$$
+Se $\Gamma$ for a linha definida por $\gamma$, e $t$ for um ponto no domínio de $\gamma$, a reta tangente a $\Gamma$ pelo ponto $\gamma (t)$ é a reta de equação $x = \gamma(t) + \lambda \gamma '(x)$, para $\lambda \in \mathbb{R}$. \\
+Definimos agora um \textbf{conjunto de nível} de $f: D \subset \mathbb{R}^n \to \mathbb{R}$ como um conjunto da forma 
+$$
+S_c(f) = \{ x \in D: f(x)=c \}
+$$
+Seja $\gamma: I \subset \mathbb{R}^n \to \mathbb{R}$ um caminho cuja linha $\Gamma$ está contida num conjunto de nível $S_\alpha (f)$ e seja $t, t_0 \in I$ com $t_0 \in V_\epsilon(t_0)$ ($\epsilon \in \mathbb{R}^+$). Como $\Gamma \subset S_\alpha(f)$, temos que $(f \circ \gamma) (t_0) = \alpha$. Então:
+\begin{gather*}
+\frac{\partial}{\partial t} (f \circ \gamma)(t_0) = 0 \Leftrightarrow \nabla f(\gamma(t_0)) \cdot \nabla \gamma(t_0) = 0 \Leftrightarrow \nabla f(\gamma(t_0)) \cdot \gamma'(t_0) = 0 \Leftrightarrow \\ \nabla f(\gamma (t)) \perp \gamma'(t)
+\end{gather*}
+Ou seja, o gradiente de uma função num ponto de um conjunto de nível (dessa função) é sempre ortogonal a esse conjunto. Então, para qualquer ponto $p$ na linha $\Gamma \subset S_\alpha (f)$ diz-se que o vetor $\nabla f(p)$ é \textbf{normal} a $\Gamma$ em $p$.\\ 
 
 \end{document}
