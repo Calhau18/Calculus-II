@@ -222,21 +222,62 @@ Df(a) =
 \end{bmatrix}$
 \end{center}
 
-\subsection{Linhas e Conjuntos de Nível}
-Dá-se o nome de \textbf{caminho} ou \textbf{trajetória} a uma função contínua $\gamma: I \to \mathbb{R}^n$ em que $I \subset \mathbb{R}$ é um intervalo. Ao conjunto de chegada de dá-se o nome de \textbf{linha}.\\
+\subsection{Linhas, Conjuntos de Nível e Tangentes}
+Dá-se o nome de \textbf{caminho} ou \textbf{trajetória} a uma função contínua $\gamma: I \to \mathbb{R}^n$ em que $I \subset \mathbb{R}$ é um intervalo. Ao conjunto de chegada de $\gamma$ dá-se o nome de \textbf{linha}.\\
 Define-se um \textbf{vetor tangente} a um caminho $\gamma$ de classe $C^1$como o vetor dado pelo limite
 $$
 \gamma '(t) = \lim_{h \to 0} \frac{\gamma(t+h)-\gamma(t)}{h}
 $$
-Se $\Gamma$ for a linha definida por $\gamma$, e $t$ for um ponto no domínio de $\gamma$, a reta tangente a $\Gamma$ pelo ponto $\gamma (t)$ é a reta de equação $x = \gamma(t) + \lambda \gamma '(x)$, para $\lambda \in \mathbb{R}$. \\
+Note-se que isto é apenas um reaproveitamento da ideia de aproximar a reta tangente por secantes em pontos cada vez menos distantes na linha.\\
+Se $\Gamma$ for a linha definida por $\gamma$, e $t$ for um ponto no domínio de $\gamma$, a reta tangente a $\Gamma$ pelo ponto $\gamma (t)$ é a reta de equação $x = \gamma(t) + \lambda \gamma '(t)$, para $\lambda \in \mathbb{R}$. \\
 Definimos agora um \textbf{conjunto de nível} de $f: D \subset \mathbb{R}^n \to \mathbb{R}$ como um conjunto da forma 
 $$
 S_c(f) = \{ x \in D: f(x)=c \}
 $$
-Seja $\gamma: I \subset \mathbb{R}^n \to \mathbb{R}$ um caminho cuja linha $\Gamma$ está contida num conjunto de nível $S_\alpha (f)$ e seja $t, t_0 \in I$ com $t_0 \in V_\epsilon(t_0)$ ($\epsilon \in \mathbb{R}^+$). Como $\Gamma \subset S_\alpha(f)$, temos que $(f \circ \gamma) (t_0) = \alpha$. Então:
-\begin{gather*}
-\frac{\partial}{\partial t} (f \circ \gamma)(t_0) = 0 \Leftrightarrow \nabla f(\gamma(t_0)) \cdot \nabla \gamma(t_0) = 0 \Leftrightarrow \nabla f(\gamma(t_0)) \cdot \gamma'(t_0) = 0 \Leftrightarrow \\ \nabla f(\gamma (t)) \perp \gamma'(t)
-\end{gather*}
-Ou seja, o gradiente de uma função num ponto de um conjunto de nível (dessa função) é sempre ortogonal a esse conjunto. Então, para qualquer ponto $p$ na linha $\Gamma \subset S_\alpha (f)$ diz-se que o vetor $\nabla f(p)$ é \textbf{normal} a $\Gamma$ em $p$.\\ 
+Seja $\gamma: I \subset \mathbb{R} \to \mathbb{R}^n$ um caminho cuja linha $\Gamma$ está contida num conjunto de nível $S_\alpha (f)$ e seja $t, t_0 \in I$ com $t \in V_\epsilon(t_0)$ ($\epsilon \in \mathbb{R}^+$). Como $\Gamma \subset S_\alpha(f)$, temos que $(f \circ \gamma) (t_0) = \alpha$. Então:
+$$
+\frac{\partial}{\partial t} (f \circ \gamma)(t_0) = 0 \Leftrightarrow \nabla f(\gamma(t_0)) \cdot \gamma'(t_0) = 0 \Leftrightarrow \nabla f(\gamma (t)) \perp \gamma'(t)
+$$
+Então, o gradiente de uma função num ponto de um conjunto de nível (dessa função) é sempre ortogonal a esse conjunto. Diz-se, para tais pontos $p$ na linha $\Gamma \subset S_\alpha (f)$ que o vetor $\nabla f(p)$ é \textbf{normal} a $\Gamma$ em $p$.\\ 
+Note-se que esta observação permite-nos definir equações para planos. Seja $G_f$ o gráfico de uma função escalar $f: \mathbb{R}^{n-1} \to \mathbb{R}$, ou seja, $G_f = \{ (x_1, x_2, \cdots, x_n) \in \mathbb{R}^n : x_n = f(x_1, x_2, \cdots , x_{n-1}) \}$. Se considerarmos a função $F: \mathbb{R}^n \to \mathbb{R}$ definida por $F(x) = x_n - f(x_1, x_2, \cdots , x_{n-1})$, temos que $G_f = S_0(F)$, de forma que o plano tangente a $G_f$ por um ponto $p \in D_f$ tem vetor normal 
+$$
+\nabla F(p) = \left( -\frac{\partial f}{\partial x_1}(p), -\frac{\partial f}{\partial x_2}(p), \cdots , -\frac{\partial f}{\partial x_{n-1}}(p), 1 \right)  
+$$
+Conclui-se então que o plano tangente a $f$ por um ponto $f(p)$ é dada por
+$$
+x_n = f(p) + \frac{\partial f}{\partial x_1}(p)(x_1-p_1) + \frac{\partial f}{\partial x_2}(p)(x_2-p_2) + \cdots + \frac{\partial f}{\partial x_{n-1}}(p)(x_{n-1}-p_{n-1}) 
+$$
+
+\subsection{Derivadas de Ordem Superior}
+Para qualquer $D \subset \mathbb{R}^n$ aberto e um campo escalar $f \in C^1(D)$, temos que as derivadas parciais $\frac{\partial f}{\partial x_k}$ ($k \in \{ 1, 2, \cdots, n \}$) são também campos escalares definidos em $D$. Se estas funções forem também elas diferenciáveis, podemos definir as \textbf{derivadas de segunda ordem} de $f$:
+$$
+\frac{\partial}{\partial x_j} \left( \frac{\partial f}{\partial x_i} \right) = \frac{\partial ^2 f}{\partial x_j x_i}
+$$
+Mais genericamente, para indices $i_1, i_2, cdots , i_k \in \{ 1, 2, \cdots , n \}$, designamos por derivada de ordem $k$ à função
+$$
+\frac{\partial ^k f}{\partial x_{i_1}x_{i_2} \cdots x_{i_k}}
+$$
+Se esta função estiver definida e for contínua em $D$, dizemos que $f$ é de classe $C^k$ em D, e escrevemos $f \in C^k(D)$. Se $f$ for de classe $C^k$ em $D$ para todo o $k \in \mathbb{N}$, então escreve-se que $f \in C ^\infty (D)$.\\
+
+\textbf{Teorema de Schwartz}: Seja $f: D \subset \mathbb{R}^n \to \mathbb{R}^m$ de classe $C^2$ em $D$ aberto. Então
+$$
+\frac{\partial}{\partial x_j} \left( \frac{\partial f}{\partial x_i} \right) = \frac{\partial ^2 f}{\partial x_j x_i}
+$$
+Mais genericamente, se $\{ i_1, i_2, \cdots, i_k \}$ for um conjunto de índices e $\sigma$ for uma permutação desse conjunto, temos que
+$$
+\frac{\partial ^k f}{\partial x_{i_1} \partial x_{i_2} \cdots \partial x_{i_k}} = \frac{\partial ^k f}{\partial x_{\sigma(i_1)} \partial x_{\sigma(i_2)} \cdots \partial x_{\sigma(i_k)}}
+$$
+A notação mais frequente para escrever este tipo de derivadas é então
+$$
+\frac{\partial ^N f}{\partial x_1^{\alpha_1} \partial x_2^{\alpha_2} \cdots \partial x_n ^{\alpha_n}}
+$$
+em que $\alpha_i$ representa o número de vezes que se diferencia em ordem à variável $x_i$ e $N = \sum_{i=0}^n \alpha_i$.
+
+\subsection{Extremos e Teorema de Taylor}
+Seja $f: D \subset \mathbb{R}^n \to \mathbb{R}$ diferenciável com $D$ aberto. Temos que $a \in D$ só pode ser um extremo de $f$ se satisfizer:
+$$
+\nabla f(a)=0
+$$
+Aos pontos que satisfazem esta propriedade dá-se o nome de \textbf{pontos críticos}
 
 \end{document}
