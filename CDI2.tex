@@ -213,6 +213,7 @@ em que $\theta$ é o ângulo entre o vetor $v$ e o vetor $\nabla f(a)$. Como est
 Observe-se ainda que se $v \perp \nabla f(a)$ então a derivada de $f$ em $a$ segundo $v$ é nula.\\
 Note-se que com os vetores linha da matriz jacobiana de uma função $f: D \subset \mathbb{R}^n \to \mathbb{R}^m$ correspondem aos gradientes das funções coordenadas de $f$:
 \begin{center}$
+\renewcommand*{\arraystretch}{1.2}
 Df(a) =
 \begin{bmatrix}
 \nabla f_1(a) \\
@@ -274,10 +275,62 @@ $$
 em que $\alpha_i$ representa o número de vezes que se diferencia em ordem à variável $x_i$ e $N = \sum_{i=0}^n \alpha_i$.
 
 \subsection{Extremos e Teorema de Taylor}
-Seja $f: D \subset \mathbb{R}^n \to \mathbb{R}$ diferenciável com $D$ aberto. Temos que $a \in D$ só pode ser um extremo de $f$ se satisfizer:
+Tal como anteriormente, para estudar o extremo de uma função num ponto, vamos considerar o que acontece a essa função de acordo com certas retas (analisar uma função segundo uma reta permite-nos transformar o estudo de uma função em $\mathbb{R}^n$ no estudo de uma função em $\mathbb{R}$).\\
+Considere-se então a função $\gamma: \mathbb{R} \to \mathbb{R}^n$ definida por $\gamma (t) = a + th$. Desta forma, temos que $g(t) = f(\gamma(t))$ consiste nos valores que $f$ toma sobre a reta por $a$ de vetor diretor $h$. Temos que $f$ vai ter um extremo em $a$ se e só se $g$ tiver um extremo em $t=0$, pelo que $f$ tem um extremo se e só se
+$$
+g'(0) = (f \circ \gamma )' (0) = \nabla f(\gamma (0)) \cdot \gamma'(0) = \nabla f(a) h
+$$
+for nulo para qualquer vetor $h$. Conclui-se que $f$ tem um extremo em $a$ no interior do seu domínio se e só se:
 $$
 \nabla f(a)=0
 $$
-Aos pontos que satisfazem esta propriedade dá-se o nome de \textbf{pontos críticos}
+Aos pontos que satisfazem esta propriedade dá-se o nome de \textbf{pontos críticos} de $f$. Note-se que nem todos os pontos críticos são extremos da função. Aos pontos críticos de $f$ que não são extremos dessa função dá-se o nome de \textbf{pontos de sela}. Pode-se no entanto dizer que o conjunto dos extremos no interior do domínio de uma função está contido no conjunto dos pontos críticos dessa função.\\
+Torna-se então necessário arranjar um método de distinguir os extremos dos pontos de sela de uma função. Para funções em $\mathbb{R}$ isto podia ser feito através do Teorema de Taylor. Voltamos então a restringir a análise da função aos valores que esta toma segundo uma reta, ou seja, voltamos a considerar a função $\gamma: \mathbb{R} \to \mathbb{R}^n$ definida por $\gamma (t) = a + th$, de forma que $f$ tem polinómio de Taylor segundo a reta definida por $h$:
+$$
+f(a+th) = f(a) + f'(a)t + \frac{1}{2!}f''(a)t^2 + ... + \frac{1}{n!} f^{(n)}(a)t^n + r_{n+1}(t)
+$$
+sendo que
+$$
+f'(a) = \sum_{j=1}^n \frac{\partial f}{\partial x_j}(a) h_j = \nabla f(a) h  \quad \quad \quad \quad 
+f''(a) = \sum_{k=1}^n \sum_{j=1}^n \frac{\partial ^2 f}{\partial x_j x_k} (a) h_j h_k 
+$$
+$$
+f'''(a) = \sum_{k,i,j =1}^n \frac{\partial ^3 f}{\partial x_i x_j x_k} (a) h_i h_j h_k
+$$
+e por aí em diante.\\
+Note-se que a segunda derivada em $a$ pode ser escrita como um produto matricial $h^T \cdot D^2 f(a) \cdot h$ em que:
+$$
+D^2 f(a) = 
+\renewcommand*{\arraystretch}{1.8}
+\begin{bmatrix}
+\frac{\partial ^2 f}{\partial x_1 ^2} (a) && \frac{\partial ^2 f}{\partial x_2 x_1} (a) && \cdots && \frac{\partial ^2 f}{\partial x_n x_1} (a) \\
+\frac{\partial ^2 f}{\partial x_1 x_2} (a) && \frac{\partial ^2 f}{\partial x_2^2} (a) && \cdots && \frac{\partial ^2 f}{\partial x_n x_2} (a) \\
+\cdots && \cdots && \cdots && \cdots \\
+\frac{\partial ^2 f}{\partial x_1 x_n} (a) && \frac{\partial ^2 f}{\partial x_2 x_n} (a) && \cdots && \frac{\partial ^2 f}{\partial x_n ^2} (a)
+\end{bmatrix}
+$$
+A esta matriz dá-se o nome de \textbf{matriz Hessiana} de $f$ no ponto $a$. Esta representação da segunda derivada permite-nos usar conhecimento de Álgebra Linear para estudar os pontos críticos da função. Relembra-se que uma matriz se diz:
+\begin{itemize}
+	\item Definida positiva/negativa se todos os seus valores próprios forem, respetivamente, positivos/negativos;
+	\item Semi-definida positiva/negativa se todos os seus valores próprios forem, respetivamente, não-negativos/não-positivos;
+	\item Indefinida se tiver valores próprios positivos e negativos;
+\end{itemize}
+Então, para um ponto crítico de $f$, temos que:
+$$
+\frac{f(a+th)-f(a)}{t^2} = \frac{1}{2!}f''(a) + \frac{r_3(t)}{t^2} \Rightarrow \lim_{t \to 0} \frac{f(a+th)-f(a)}{t^2} = \frac{1}{2!}f''(a)
+$$
+pelo que $f(a+h)-f(a)$ tem o mesmo sinal que a segunda derivada de $f$. Como, segundo o teorema de Schwartz, a matriz Hessiana é sempre simétrica, e temos que a matriz Hessiana é diagonalizável. Então, há valor próprio $\lambda$ e vetor próprio $h$ associado a $\lambda$ tais que:
+$$
+f''(a) = h^T \cdot D^2 (a) \cdot h = h^T \cdot \lambda h = \lambda ||h||^2
+$$
+Pelo que, o sinal de $f(a+h)-f(a)$ é dado pelo sinal dos valores próprios da matriz Hessiana de $f$. Concluímos então que para $a$ no interior do domínio de um campo escalar $f$:
+\begin{itemize}
+	\item Se a Hessiana de $f$ em $a$ for definida positiva, então $a$ é um mínimo local;
+	\item Se a Hessiana de $f$ em $a$ for definida negativa, então $a$ é um máximo local;
+	\item Se a Hessiana de $f$ em $a$ for indefinida, então $a$ é um ponto em sela;
+	\item Se $a$ é um mínimo local então a Hessiana de $f$ em $a$ é semi-definida positiva;
+	\item Se $a$ é um máximo local então a Hessiana de $f$ em $a$ é semi-definida negativa;
+\end{itemize}
+Note-se que esta abordagem pode por vezes não funcionar. Nestes casos, é necessário estudar diretamente o valor de $f$ numa bola à volta de $a$.
 
 \end{document}
