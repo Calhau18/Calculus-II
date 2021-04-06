@@ -333,4 +333,39 @@ Pelo que, o sinal de $f(a+h)-f(a)$ é dado pelo sinal dos valores próprios da m
 \end{itemize}
 Note-se que esta abordagem pode por vezes não funcionar. Nestes casos, é necessário estudar diretamente o valor de $f$ numa bola à volta de $a$.
 
+\section{Integrabilidade}
+
+\subsection{O Integral}
+Relembra-se do Cálculo I que a integração teve como motivação o cálculo da área de baixo de funções. Isto foi alcançado definindo estruturas "elementares" para as quais este problema era trivial (funções constantes em intervalos), e aproximar todoso os outros casos por estruturas desse tipo. Tal como feito anteriormente nesta disciplina, vamos tentar reduzir o caso multidimensional ao caso unidimensional, já estudado. Para isso, começamos então de definir intervalos em $\mathbb{R}^n$:\\
+Um conjunto $I \subset \mathbb{R}^n$ diz-se um \textbf{intervalo} se $I = I_1 \times I_2 \times \cdots I_n$ onde cada $I_j \subset \mathbb{R}$ é um intervalo em $\mathbb{R}$.\\
+Observa-se que $I$ será aberto, fechado ou limitado se e só se todas as suas arestas $I_1, \cdots, I_n$ forem, respetivamente, abertas, fechadas ou limitado.
+Note-se que um intervalo limitado em $\mathbb{R}^2$/$\mathbb{R}^3$ é um retângulo/paralelipipedo alinhado com os eixos coordenados. É então intuitivo definir a área de um intervalo da seguinte forma:\\
+Se $I = I_1 \times I_2 \times \cdots \times I_n$ é tal que $s_i = \sup(I_i)$ e $i_i = \inf(I_i)$ existem para todo o $i \in \{1,2,\cdots n\}$, então o \textbf{volume} (n-dimensional) de $I$ é dado por
+$$
+V_n(I) = \prod_{i=1}^n (s_i-i_i)
+$$
+note-se que para esta definição é irrelevante se os intervalos em $\mathbb{R}$ são abertos ou fechados.\\
+Agora que já temos as nossas estruturas elementares, estamos prontos para aproximar os restantes casos:\\
+Relembre-se de CDI-I que uma partição de um intervalo $I$ é um conjunto de pontos $P(I) = \{ x_0, x_1, \cdots, x_k \}$ tal que $x_0 = \inf(I)$ e $x_n = \sup(I)$. A cada partição associa-se a decomposição $I = \bigcap_{i=0}^{k-1} [a_i, a_{i+1}]$.\\
+Generaliza-se então este conceito para $\mathbb{R}^n$ considerando uma \textbf{partição} de um intervalo limitado $I = I_1 \times \cdots I_n \subset \mathbb{R}^n$ como o produto cartesiano $P(I) = P(I_1) \times P(I_2) \times \cdots \times P(I_n)$. A estas partições também estará associada uma \textbf{decomposição} de $I$, dada pelo produto cartesiano dos intervalos da decomposição de cada "aresta" de $I$. Assim, temos um mecanismo para aproximar área de uma função, tal como em cálculo I:\\
+Dada uma partição $P(I)$ de um intervalo limitado $I \subset \mathbb{R}^n$, o conjunto $D_P$ dos intervalos da decomposição associada a $P$ e um campo escalar limitado $f: \mathbb{R}^n \to \mathbb{R}$, definimos então a soma inferior ($s_P(f)$) e soma superior ($S_P(f)$) de $f$ relativa a $P$ como (respetivamente):
+$$
+s_P(f) = \sum_{X \in D_P} \inf(f|_X) \cdot V_n(X)
+$$
+$$
+S_P(f) = \sum_{X \in D_P} \sup(f|_X) \cdot V_n(X)
+$$
+De forma semelhante a CDI-I, podemos definir partições mais finas e sobrepostas para fundamentar que os seguintes valores existem:
+$$
+\underline{\int_I} f = \sup \{ s_p(f): \forall \, P(I) \}
+$$
+$$
+\overline{\int_I} f = \inf \{ S_p(f): \forall \, P(I) \}
+$$
+Definimos então \textbf{integrabilidade à Riemann} da seguinte forma:\\
+Um campo escalar $f: I \subset \mathbb{R}^n$ diz-se integrável à Riemann se e só se $\overline{\int_I} f = \underline{\int_I} f$. Neste caso dá-se o nome de \textbf{integral} de $f$ em $I$ ao valor:
+$$
+\int_I f = \overline{\int_I} f = \underline{\int_I} f
+$$
+
 \end{document}
