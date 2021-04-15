@@ -368,4 +368,69 @@ $$
 \int_I f = \overline{\int_I} f = \underline{\int_I} f
 $$
 
+\subsection{Propriedades do Integral e Funções Integráveis}
+Tal como em CDI-I, é fácil deduzir a partir desta definição as seguintes propriedades, para quaisquer campos escalares integráveis $f$ e $g$ sobre $I$:
+\begin{itemize}
+	\item $\int_I (af+bg) = a\int_I f + b \int_I g$;
+	\item $f(x) \geq g(x) _{\forall x \in I} \Rightarrow \int_I f \geq \int_I g$.
+	\item $\big| \int_I f \big| \leq \int_I |f|$.
+\end{itemize}
+Tentemos então agora responder à pergunta "Que funções são integráveis?". Começamos com a seguinte definição:\\
+Define-se $A \in \mathbb{R}^n$ como um \textbf{conjunto de conteúdo nulo} se, dado $\epsilon >0$, existir uma coleção finita de intervalos $\{ I_k \}_{i=1}^N$ tal que:
+$$
+A \subset \bigcap_{k=1}^N I_k \quad \wedge \quad \sum_{k=1}^N vol(I_k) < \epsilon
+$$
+Temos que o gráfico de um campo escalar contínuo definido num intervalo compacto em $\mathbb{R}^n$ tem conteúdo nulo em $\mathbb{R}^{n+1}$.\\
+É também fácil de concluir que a união finita de conjuntos de conteúdo nulo é também um conjunto de conteúdo nulo.\\
+Chegamos então à seguinte condição para integrabilidade:\\
+Qualquer função $f: I \subset \mathbb{R}^n \to \mathbb{R}$ contínua exceto num conjunto de conteúdo nulo é integrável em I.\\
+A noção de conteúdo nulo pode ser generalizada para a noção de \textbf{medida nula}, se considerarmos uma coleção de intervalos contável e não apenas finita. Esta noção dá-nos não uma condição suficiente para integrabilidade, mas uma condição necessária e suficiente. Ou seja, uma função será integrável num intervalo se e só se for contínua exceto num conjunto de conteúdo nulo, nesse intervalo.\\ 
+
+
+\subsection{Teorema de Fubini e Volumes}
+Visto quais são as funções integráveis, falta-nos saber como integrar uma função. Para isso, servimo-nos do \textbf{Teorema de Fubini}:\\
+Sejam $A \subset \mathbb{R}^n$ e $B \subset \mathbb{R}^m$ intervalos compactos, e seja $f$ um campo escalar limitado e integrável no intervalo $A \times B \subset \mathbb{R}^{n+m}$. Se, para cada $x \in A$, a função $y \to f(x,y)$ é integrável e a função $x \to \int_B f(x,y) \, dy$ é integrável em $A$, então
+$$
+\int_{A \times B} f(x,y) \, dx \, dy = \int_A \left( \int_B f(x,y) \, dy \right) \, dx = \int_B \left( \int_A f(x,y) \, dx \right) \, dy
+$$
+Ou seja, na prática, a integração de uma função em $n$ variáveis pode ser feita através de $n$ integrações em uma variável, fixando as restantes variáveis nesse processo. Aos intgerais desta forma dá-se o nome de \textbf{integrais iterados}.\\
+Este teorema permite-nos calcular o volume de diversos sólidos. Para isto usamos a \textbf{função caraterística}. Define-se função característica de um conjunto $D \subset \mathbb{R}^n$ como a função $\chi_D: I \to \mathbb{R}$ tal que $D \subset I$ e:
+$$
+\chi _D(x) = 
+\begin{cases}
+1, \text{ se } x \in D \\
+0, \text{ se } x \in I/D
+\end{cases}
+$$
+Se esta função for integrável podemos então definir o $n$-volume do conjunto $D$ como:
+$$
+vol_n(D) = \int_I \chi _D
+$$
+Nomeadamente, conjuntos da forma
+$$
+D_3 = \{ (x,y,z) \in \mathbb{R}^n: l<x<r; l_1(x) < y < u_1(x); l_2(x, y) < z < u_2(x,y) \}
+$$
+$$
+D_2 = \{ (x,y) \in \mathbb{R}^n: l<x<r; l_1(x) < y < u_1(x) \}
+$$
+em que $l_i, u_i$ são funções $\mathbb{R}^i \to \mathbb{R}$, têm volume
+$$
+vol_3(D_3) = \int_l^u \left( \int_{l_1(x)}^{u_1(x)} \left( \int_{l_2(x,y)}^{u_2(x,y)} 1 \, dz \right) dy \right) dx
+$$
+$$
+vol_2(D_2) = \int_l^u \left( \int_{l_1(x)}^{u_1(x)} 1 \, dx \right) dx
+$$
+Para generalizar este resultado para dimensões, definimos um \textbf{corte} perpendicular ao eixo $x_k$ como um conjunto
+$$
+C(x_k) = D \cap \{ (x_1, x_2, \cdots, x_n) \in \mathbb{R}^n : x_k = c (c \in \mathbb{R} \}
+$$
+Desta forma, vemos que o volume de um conjunto 
+$$
+D = \{ (x,y) \in \mathbb{R}^{n-1} \times \mathbb{R}: x \in C(y) ; a < y < b \}
+$$ 
+pode ser definido da seguinte forma:
+$$
+vol_n(D) = \int_a^b vol_{n-1}(C(y)) dy
+$$
+
 \end{document}
