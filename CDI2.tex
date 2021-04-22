@@ -433,4 +433,31 @@ $$
 vol_n(D) = \int_a^b vol_{n-1}(C(y)) dy
 $$
 
+\subsection{Aplicações dos Integrais}
+O uso mais frequente e famoso de integrais é para calcular áreas/volumes. No entanto, os integrais podem ser usados para calcular outras entidades físicas muito relevantes. Nomeadamente:
+\begin{itemize}
+	\item \textbf{Massa}:\\
+Seja $\sigma: D \to \mathbb{R}$ uma função que representa a densidade de um sólido representado por $D \subset \mathbb{R}^n$. Então, a massa do sólido é dada por
+$$
+\int_D \sigma
+$$
+Note-se que se $\sigma$ é constante ($\sigma(x) = \rho, \forall x \in D$), temos que $M = V \cdot \rho$.
+	\item \textbf{Centro de Massa}:\\
+Recuperando a função densidade $\sigma: D \to \mathbb{R}$ do sólido representado por $D$, temos que o centro de massa do sólido é dado por
+$$
+\overline{x} = (\overline{x_1}, \overline{x_2}, \cdots, \overline{x_n})
+$$
+tal que, para qualquer $i \in \{1, 2, \cdots, n \}$
+$$
+\overline{x_i} = \frac{\int_D x_i \sigma(x)}{\int_D x_i} = \frac{1}{M} \int_D x_i \sigma(x)
+$$
+No caso em que $\sigma$ vale 1 em todos os pontos, a este ponto dá-se também o nome de \textbf{centróide}.
+	\item \textbf{Momento de Inércia}:\\
+Seja $L$ uma linha reta e $d_L(x)$ a distância do ponto $x \in \mathbb{R}^n$ à linha $L$. O momento de inércia do conjunto $D$ relativo à reta $L$, é dado por
+$$
+I_L = \int_D \sigma(x) d_L(x)^2
+$$
+em que $\sigma$ é mais uma vez a função densidade do sólido representado por $D$.
+\end{itemize}
+
 \end{document}
