@@ -109,7 +109,7 @@ Teoremas sobre funções contínuas:
 \end{itemize}
 
 \subsection{Limites}
-Tal como em CDI-I, definimos o \textbf{prolongamento contínuo} de uma função $f: D \subset \R^n \to \R^m$ como a função contínua $\tilde{f}: D^* \subset \overline{D} \to \R^n$ tal que $\tilde{f}(x) = f(x)$ para $x \in D$ e $D^*$ corresponde ao conjunto dos pontos em $\overline{D}$ tais que $f$ é prolongável por continuidade nesses pontos.\\
+Tal como em CDI-I, definimos o \textbf{prolongamento contínuo} de uma função $f: D \subset \R^n \to \R^m$ como a função contínua $\tilde{f}: D^* \subset \overline{D} \to \R^m$ tal que $\tilde{f}(x) = f(x)$ para $x \in D$ e $D^*$ corresponde ao conjunto dos pontos em $\overline{D}$ tais que $f$ é prolongável por continuidade nesses pontos.\\
 Então, definimos o limite de $f$ em $a \in \R$ como o valor do prolongamento contínuo de $f$ nesse ponto.
 $$
 \lim_{x \to a} f(x) = \tilde{f}(x)
@@ -126,8 +126,7 @@ se e só se
 \end{itemize}
 Note-se que para um limite existir num ponto $a$, este tem de ser igual em todas as curvas que passam por esse ponto. Nomeadamente, o limite de uma função em $a$ só pode existir se o limite existir e for igual segundo todas as retas por $a$ (note-se que o limite segundo uma reta é um limite em $\R$). A estes limites (segundo retas) dá-se o nome de \textbf{limites direcionais} segundo uma reta/vetor.
 No entanto, e como é impossível verificar o limite de uma função segundo todas as curvas que passam por um ponto, é necessário um método para calcular um limite.\\
-\textbf{Método das funções enquadradas}:\\
-Sejam $f,g,h: \R^n \to \R^m$ definidas em $B_r(a)$ para $a \in \R^n, r \in \R^+$. Então:
+Para este propósito usamos o \textbf{método das funções enquadradas}: Sejam $f,g,h: \R^n \to \R$ definidas em $B_r(a)$ para $a \in \R^n, r \in \R^+$. Então:
 $$
 f(x) \geq g(x) \geq h(x) \quad \forall_{x \in B_r(a)} \Rightarrow \lim_{x \to a} f(x) \geq \lim_{x \to a} g(x) \geq \lim_{x \to a} h(x) 
 $$
@@ -256,7 +255,7 @@ Para qualquer $D \subset \R^n$ aberto e um campo escalar $f \in C^1(D)$, temos q
 $$
 \frac{\partial}{\partial x_j} \left( \frac{\partial f}{\partial x_i} \right) = \frac{\partial ^2 f}{\partial x_j x_i}
 $$
-Mais genericamente, para indices $i_1, i_2, cdots , i_k \in \{ 1, 2, \cdots , n \}$, designamos por derivada de ordem $k$ à função
+Mais genericamente, para indices $i_1, i_2, \cdots , i_k \in \{ 1, 2, \cdots , n \}$, designamos por derivada de ordem $k$ à função
 $$
 \frac{\partial ^k f}{\partial x_{i_1}x_{i_2} \cdots x_{i_k}}
 $$
@@ -264,9 +263,9 @@ Se esta função estiver definida e for contínua em $D$, dizemos que $f$ é de 
 
 \textbf{Teorema de Schwartz}: Seja $f: D \subset \R^n \to \R^m$ de classe $C^2$ em $D$ aberto. Então
 $$
-\frac{\partial}{\partial x_j} \left( \frac{\partial f}{\partial x_i} \right) = \frac{\partial ^2 f}{\partial x_j x_i}
+\frac{\partial}{\partial x_j} \left( \frac{\partial f}{\partial x_i} \right) = \frac{\partial}{\partial x_i} \left( \frac{\partial f}{\partial x_j} \right) = \frac{\partial ^2 f}{\partial x_j x_i}
 $$
-Mais genericamente, se $\{ i_1, i_2, \cdots, i_k \}$ for um conjunto de índices e $\sigma$ for uma permutação desse conjunto, temos que
+Mais genericamente, se $\{ i_1, i_2, \cdots , i_k \}$ for um conjunto de índices e $\sigma$ for uma permutação desse conjunto, temos que
 $$
 \frac{\partial ^k f}{\partial x_{i_1} \partial x_{i_2} \cdots \partial x_{i_k}} = \frac{\partial ^k f}{\partial x_{\sigma(i_1)} \partial x_{\sigma(i_2)} \cdots \partial x_{\sigma(i_k)}}
 $$
@@ -335,6 +334,107 @@ Pelo que, o sinal de $f(a+h)-f(a)$ é dado pelo sinal dos valores próprios da m
 \end{itemize}
 Note-se que esta abordagem pode por vezes não funcionar. Nestes casos, é necessário estudar diretamente o valor de $f$ numa bola à volta de $a$.
 
+\section{Variedades}
+\subsection{Teorema da Função Inversa}
+Seja $f:A \subset \R^n \to \R^n$ de classe $C^1$ no aberto $A$ e seja $a \in A$. Se $|Df(a)| \neq 0$, então $f$ é invertível numa bola centrada em $a$ ($B_r(a)$) e a sua inversa é também de classe $C^1$ e tem derivada dada por
+$$
+Df^{-1}(y) = \left( Df(x) \right)^{-1}
+$$
+para todo o $y \in B_r(a)$ e $x \in \R^n$ tal que $f(x) = y$.\\
+Notas:
+\begin{itemize}
+    \item Este teorema dá-nos apenas que a função será invertível na vizinhança, não nos permite tirar nenhum resultado sobre intervalos (mesmo que a função seja invertível em todos os pontos);
+    \item Se $|Df(a)|=0$, o teorema não tira conclusões nenhumas (a função pode ser invertível numa vizinhança de $a$ na mesma - pensar nas funções $x^2$ e $x^3$).
+\end{itemize}
+
+\subsection{Teorema da Função Implícita}
+O gráfico de uma função escalar $f: \R^n \to \R$ é o conjunto
+$$ G(f) = \{(x,y) \in \R^n \times \R: y = f(x) \} \subset \R^{n+1} $$
+alternativamente, podemos definir este conjunto como $G(f) = \{(x,y) \in \R^{n+1}: F(x,y) = 0 \}$, em que $F: \R^{n+1} \to \R$ é definida por $F(x,y) = y - f(x)$, pelo que $G(f)$ é o conjunto de nível 0 da função $F$.
+
+Será, no entanto, que podemos tirar conclusões no sentido contrário? Isto é, dado uma conjunto de nível de uma função $F(x,y)$, será que há uma função $f: \R^n \to \R$ tal que $y = f(x)$? Se a resposta for afirmativa, dizemos que $f$ é definida \textbf{implicitamente} por $F$, ou mais especificamente, pela equação $F(x,y) = 0$.
+
+A resposta a tal questão é dada pelo \textbf{Teorema da Função Implícita}\\
+Seja $F: A \subset \R^n \to \R^m$, com $m<n$ uma função de classe $C^1$ definida num aberto $A$. Seja $(a,b) \in \R^n$ tal que $a \in \R^{n-m}$ e 
+$$
+F(a,b) = 0; \quad \det D_yF(a,b) \neq 0
+$$
+Então, existe uma função $f: B_\epsilon(a) \to \R^m$ de classe $C^1$ tal que, nessa bola em torno de $(a,b)$ se tem que 
+$$
+F(x,y) = 0 \Leftrightarrow y = f(x)
+$$
+
+Nesse caso, podemos conclur que $F(x, f(x)) = 0$ e, derivando, que $D_xF(a,b) + D_yF(a,b)Df(a) = 0$, o que nos dá
+$$ Df(a) = - (D_yF(a,b))^{-1} D_xF(a,b) $$
+
+Nomeadamente, temos que:
+\begin{itemize}
+    \item Para uma função $F:\R^2 \to \R$ de classe $C^1$ e $(a,b) \subset \R^2$ tal que $F(a,b)=0$, existe uma função $f: \R \to \R$ definida implicitamente por $F$ à volta de $(a,b)$, se e só se $\frac{\partial F}{\partial y} \neq 0$. Se esse for o caso, temos que:
+$$
+f'(a) = -\frac{\frac{\partial F}{\partial x}(a,b)}{\frac{\partial F}{\partial y}(a,b)}
+$$
+    \item Para uma função $F:\R^3 \to \R$ de classe $C^1$ e $(a,b,c) \subset \R^3$ tal que $F(a,b,c)=0$, existe uma função $f: \R^2 \to \R$ definida implicitamente por $F$ à volta de $(a,b,c)$, se e só se $\frac{\partial F}{\partial z} \neq 0$. Se esse for o caso, temos que:
+$$
+\frac{\partial f}{\partial x}(a,b) = -\frac{\frac{\partial F}{\partial x}(a,b,c)}{\frac{\partial F}{\partial z}(a,b,c)} \quad \text{ e } 
+\quad \frac{\partial f}{\partial y}(a,b) = -\frac{\frac{\partial F}{\partial x}(a,b,c)}{\frac{\partial F}{\partial z}(a,b,c)}
+$$
+    \item Para uma função $F:\R^3 \to \R^2$ de classe $C^1$ definida por duas funções coordenada $F_1$ e $F_2$, e $(a,b,c) \subset \R^3$ tal que $F(a,b,c)=(0,0)$, existe uma função $f: \R \to \R^2$ definida implicitamente por $F$ à volta de $(a,b,c)$, se e só se $\det D_{y,z}F(a,b,c) \neq 0$. Se esse for o caso, temos que:
+$$
+f'(a) = \begin{bmatrix} f_1(a) \\ f_2(a) \end{bmatrix} 
+= - \begin{bmatrix} 
+\frac{\partial F_1}{\partial y}(a,b,c) & \frac{\partial F_1}{\partial z}(a,b,c) \\
+\frac{\partial F_2}{\partial y}(a,b,c) & \frac{\partial F_2}{\partial z}(a,b,c) 
+\end{bmatrix}^{-1} \begin{bmatrix} \frac{\partial F_1}{\partial x}(a,b,c) \\
+\frac{\partial F_2}{\partial x}(a,b,c) \end{bmatrix}
+$$
+\end{itemize}
+
+\subsection{Variedades}
+Uma \textbf{variedade} é, de forma vaga, a definição matemática que usamos para descrever uma superfície em $\R^n$ em que o teorema da função implícita seja aplicável. 
+
+Define-se $M \subset \R^n$ como uma variedade de dimensão $n-m$ se, para qualquer ponto $a \in M$, existe uma bola $B = B_\epsilon(a)$ centrada em $a$, tal que o conjunto $M \cap B$ pode ser descrito de uma das três seguintes maneiras:
+\begin{itemize}
+    \item Como conjunto de nível zero de uma função $F: \R^n \to \R^m$ ($m<n$) de classe $C^1$, definida num aberto tal que a matriz derivada $DF(x)$ tem característica $m$ para qualquer $x \in M \cap B$:
+$$ M \cap B = \{ x \in \R^n: F(x) = 0 \} $$
+note-se que a condição da característica é necessária para se poder aplicar o Teorema da Função Implícita (garante a invertibilidade da matriz das variáveis dependentes);
+    \item Como gráfico de uma função $f: A \subset \R^{n-m} \to \R^m$ de classe $C^1$, definida num aberto:
+$$ M \cap B = \{ (u,v) \in \R^{n-m} \times \R^m: v=f(u), u \in A \} $$
+    \item Como a imagem de uma função $g: T \subset \R^{n-m} \to \R^n$ injetiva de classe $C^1$ em $T$ aberto definida tal que a matriz derivada $Dg(t)$ tem característica $n-m$ para qualquer $t \in T$:
+$$ M \cap B = \{ g(t), t \in T \} = g(T) $$
+à função $g$ dá-se o nome de \textbf{parametrização} de $M$ à volta de $a$.
+\end{itemize}
+
+\subsection{Espaços tagentes e normais a variedades}
+Definimos agora:
+\begin{itemize}
+    \item Um vetor tangente a uma variedade como a um vetor que é tangente a uma linha que pertença a tal variedade;
+    \item \textbf{Espaço tangente} a uma variedade num ponto como o espaço gerado pelos vetores tangentes à variedade nesse ponto. Este espaço tem a mesma dimensão que a variedade e designa-se por $T_aM$;
+    \item \textbf{Espaço normal} a uma variedade como o espaço ortogonal ao espaço tangente da variedade. Designado por $(T_aM)^\perp$.
+\end{itemize}
+Conjugando a primeira e a terceira definição de variedade observamos que $F(g(t))=0$ para todo o $t$ no domínio de $g$. Derivando, obtemos que
+$$ DF(g(t)) \cdot Dg(t) = 0 $$
+pelo que as colunas da matriz $Dg(t)$ são ortogonais às linhas da matriz $DF(g(t))$. 
+
+Como as colunas de $Dg(t)$ são os vetores tangentes a $M$ segundo as direções dos eixos coordenados de $\R^{n-m}$, temos que estas colunas geram o espaço tangente a $M$. Consequentemente, de acordo com a igualdade a cima, temos que as linhas da matriz $DF(a)$ geram o espaço normal a $M$ em $a$.
+
+Note-se então que, o método para estudar o espaço tangente/normal de uma variedade $M$ depende da forma como esta está definida:
+\begin{itemize}
+	\item Se $M$ for definido por o conjunto de nível de uma função $F$, o espaço normal num ponto $a$ é definido pela derivada $DF(a)$, e o espaço tangente pode ser calculado pela relação de ortogonalidade;
+	\item Se $M$ for definido por uma parametrização $g$, obtemos o espaço tangente em $a$ pela derivada $Dg(a)$, e o espaço normal pela condição de ortogonalidade.
+\end{itemize}
+
+\subsection{Extremos Condicionados e Multiplicadores de Lagrange}
+Admita-se que queremos encontrar os extremos de uma função $f: \R^n \to \R$ de classe $C^1$ restringida a uma variedade $M = \{x \in \R^n : F(x) = 0 \}$ para alguma função $F: \R^n \to \R^m$ também de classe $C^1$.\\
+Seja $\gamma: \R \to \R^n$ um caminho que define uma linha $\Gamma \subset M$ tal que $\gamma(0) = a$ para algum ponto $a \in M$. Então, temos que $f(a)$ ser um extremo de $f$ em $M$ equivale a $a$ ser um extremo de $f \circ \gamma: \R \to \R$ (para qualquer caminho $\gamma$):
+$$ \frac{\partial}{\partial t} f(\gamma(0)) = 0 \Leftrightarrow 
+   \nabla f(a) \cdot \gamma'(0) = 0 $$
+pelo que $\nabla f(a)$ pertence ao espaço normal de $M$ em $a$. Aos pontos que satisfazem a propriedade a cima dá-se o nome de \textbf{pontos críticos} de $f$ em $M$. Temos então que qualquer extremo de $f$ em $M$ será também um ponto crítico de $f$ em $M$ (note-se que, no entanto, nem todos os pontos críticos têm de ser extremos). Como este espaço é gerado pelos vetores $\nabla F_1(a)$, $\nabla F_2(a)$, ..., $\nabla F_m(a)$, temos que, os extremos de $f$ em $M$ são os pontos $x$ tais que:
+$$ \begin{cases}
+\nabla \left( f - \lambda_1 F_1 - \lambda_2 F_2 - \cdots - \lambda_m F_m \right) (x) = 0 \\
+F(x) = 0
+\end{cases} $$
+para escalares $\lambda_i \in \R$.
+
 \section{Integrabilidade}
 
 \subsection{O Integral}
@@ -387,7 +487,6 @@ Temos que o gráfico de um campo escalar contínuo definido num intervalo compac
 Chegamos então à seguinte condição para integrabilidade:\\
 Qualquer função $f: I \subset \R^n \to \R$ contínua exceto num conjunto de conteúdo nulo é integrável em I.\\
 A noção de conteúdo nulo pode ser generalizada para a noção de \textbf{medida nula}, se considerarmos uma coleção de intervalos contável e não apenas finita. Esta noção dá-nos não uma condição suficiente para integrabilidade, mas uma condição necessária e suficiente. Ou seja, uma função será integrável num intervalo se e só se for contínua exceto num conjunto de conteúdo nulo, nesse intervalo.\\ 
-
 
 \subsection{Teorema de Fubini e Volumes}
 Visto quais são as funções integráveis, falta-nos saber como integrar uma função. Para isso, servimo-nos do \textbf{Teorema de Fubini}:\\
@@ -451,7 +550,7 @@ $$
 $$
 tal que, para qualquer $i \in \{1, 2, \cdots, n \}$
 $$
-\overline{x_i} = \frac{\int_D x_i \sigma(x)}{\int_D x_i} = \frac{1}{M} \int_D x_i \sigma(x)
+\overline{x_i} = \frac{\int_D x_i \sigma(x)}{\int_D \sigma(x)} = \frac{1}{M} \int_D x_i \sigma(x)
 $$
 No caso em que $\sigma$ vale 1 em todos os pontos, a este ponto dá-se também o nome de \textbf{centróide}.
 	\item \textbf{Momento de Inércia}:\\
@@ -463,30 +562,25 @@ em que $\sigma$ é mais uma vez a função densidade do sólido representado por
 \end{itemize}
 
 \subsection{Mudança de variável e Regra de Leibniz}
-Defina-se \textbf{mudança de variável} como uma função contínua injetiva $\varphi: D \subset \R^n \to \R^n$ de derivada contínua, injetiva e não nula em $D$. 
+Defina-se \textbf{mudança de variável} como uma função injetiva $\varphi: D \subset \R^n \to \R^n$ de classe $C^1$ e não nula em $D$. 
+
 \textbf{Teorema da mudança de variável}:\\
 Seja $\varphi: D \to \R^n$ uma mudança de variável de domínio aberto limitado tal que $f$ é um campo escalar de domínio $X=\varphi(D)$. Então
 $$
 \int_X f(x) \, dx = \int_D f(g(t)) |\text{det} D \varphi(t)| \, dt
 $$
-Este teorema é muito útil para aproveitar certas simetrias da função $f$. Mudanças de variáveis são:
+Este teorema é muito útil para aproveitar certas simetrias da função $f$. Mudanças de variáveis comuns são:
 \begin{itemize}
 	\item \textbf{Coordenadas Polares}: Para uma função em $\R^2$.
-	$$
-	\varphi (x,y) = (r \cos \theta, r \sin \theta)
-	$$
+	$$ \varphi (x,y) = (r \cos \theta, r \sin \theta) $$
 	($r \in \R^+, \theta \in [0, 2\pi[$) aproveita simetrias circulares em torno da origem. Tem-se que $|D\varphi(x,y)| = r$.
 	\item \textbf{Coordenadas Cilíndricas}: Para uma função em $\R^3$.
-	$$
-	\varphi(x,y,z) = (r \cos \theta, r \sin \theta, z)
-	$$
+	$$ \varphi(x,y,z) = (r \cos \theta, r \sin \theta, z) $$
 	($r \in \R^+, \theta \in [0,2\pi[, z \in \R$) aproveita simetrias cilíndricas em torno do eixo $Oz$. Tem-se que $|D\varphi(x,y)| = r$.
 	\item \textbf{Coordenadas Esféricas}: Para uma função $\R^3$.
-	$$
-	\varphi (x,y,z) = (r \sin \phi \cos \theta, r\sin \phi \sin \theta, r \cos \phi)
-	$$
+	$$ \varphi (x,y,z) = (r \sin \phi \cos \theta, r\sin \phi \sin \theta, r \cos \phi)	$$
 	($r \in \R^+, \theta \in [0,2\pi[, \phi \in [0,\pi[$) aproveita simetrias esféricas em torno da origem. Tem-se que $|D\varphi(x,y)| = -r^2 \sin \phi$.
-	\item \textbf{Transformações Lineares}: Seja $\varphi: \R^n \to \R^n$ uma transformação linear representada pela matriz $A$ ($\varphi(x) = Ax, \forall \, x \in \R$). Como qualquer transformação linear é de classe $C^1$, temos que $\varphi$ é uma mudança de variável desde ques $|A| \neq 0$.\\
+	\item \textbf{Transformações Lineares}: Seja $\varphi: \R^n \to \R^n$ uma transformação linear representada pela matriz $A$ ($\varphi(x) = Ax, \forall \, x \in \R$). Como qualquer transformação linear é de classe $C^1$, temos que $\varphi$ é uma mudança de variável desde que $|A| \neq 0$.\\
 	Este tipo de mudanças de variável são úteis para facilitar contas, deslocando a origem do referencial ou alinhando os eixos coordenados com retas relevantes, por exemplo. Tem-se que $|D\varphi(x)|=|A|$. 
 \end{itemize}
 Finalmente, se nenhuma das técnicas até agora estudadas for suficiente para calcular um integral, a \textbf{regra de Leibniz} oferece-se nos uma forma de calcular a derivada de um integral que não pode ser diretamente calculado.\\
@@ -511,168 +605,96 @@ $$
 F'(x) = \frac{\partial G}{\partial x} + \frac{\partial G}{\partial u}\phi '(x) + \frac{\partial G}{\partial v} \psi '(x) = \int_{\phi(x)}^{\psi(x)} \frac{\partial f}{\partial x}(t,x) \, dt + f(\psi(x), x)\psi'(x) - f(\phi(x),x)\phi'(x)  
 $$
 
-\section{Função Inversa e Função Implícita}
-O gráfico de uma função escalar $f: \R^n \to \R$ é o conjunto
-$$ G(f) = \{(x,y) \in \R^n \times \R: y = f(x) \} \subset \R^{n+1} $$
-alternativamente, podemos definir este conjunto como $G(f) = \{(x,y) \in \R^{n+1}: F(x,y) = 0 \}$, em que $F: \R^{n+1} \to \R$ é definida por $F(x,y) = y - f(x)$, pelo que $G(f)$ é o conjunto de nível 0 da função $F$.
+\section{Integrais sobre Variedades}
 
-Será que podemos tirar conclusões no sentido contrário? Isto é, dado uma conjunto de nível de uma função $F(x,y)$, será que há uma função $f: \R^n \to \R$ tal que $y = f(x)$? Se a resposta for afirmativa, dizemos que $f$ é definida \textbf{implicitamente} por $F$, ou mais especificamente, pela equação $F(x,y) = 0$.
+\subsection{Integrais de Campos Escalares sobre Variedades}
+Definimos o integral de um campo escalar $\phi: \R^n \to \R$ sobre uma $p$-variedade como sendo o integral
+$$ \int_S \phi = \int_T \phi(g(t)) \sqrt{\det Dg(t)^T Dg(t)} \, dt $$
+em que $g: T \subset \R^p \to \R^n$ é uma parametrização de $S$.
 
-Coloca-se então a questão de determinar as condições para que haja uma função que seja determinada implicitamente por uma equação:\\
-
-\textbf{Teorema da Função Implícita}\\
-Seja $F: A \subset \R^n \to \R^m$, com $m<n$ uma função de classe $C^1$ definida num aberto $A$. Seja $(a,b) \in \R^n$ tal que $a \in \R^{n-m}$ e 
-$$
-F(a,b) = 0; \quad \det D_yF(a,b) \neq 0
-$$
-Então, existe uma função $f: B_\epsilon(a) \to \R^m$ de classe $C^1$ tal que, nessa bola em torno de $(a,b)$ se tese temm que 
-$$
-F(x,y) = 0 \Leftrightarrow y = f(x)
-$$
-Note-se que podemos pensar em $F$ como um sistema de $m$ equações em $n$ variáveis. Desta forma, a ser possível, vamos definir implicitamente $m$ variáveis em função das restantes $n-m$.
-Usam-se as variáveis $x \in \R^{n-m}$ e $y \in \R^m$. Podemos então dizer que $y=f(x)$ em torno de $(a,b)$, ou, alternativamente, $F(x, f(x)) = 0$. 
-Derivando em $x$ podemos concluir que a derivada de tal função em $a$ é dada por
-$$
-D_xF(a,b) + D_yF(a,b) \cdot Df(a) = 0 \Leftrightarrow Df(a) = -(D_yF(a,b))^{-1} D_xF(a,b)
-$$
-
-Nomeadamente, temos que:
+Esta noção tem as seguintes aplicações práticas:
 \begin{itemize}
-    \item Para uma função $F:\R^2 \to \R$ de classe $C^1$ e $(a,b) \subset \R^2$ tal que $F(a,b)=0$, existe uma função $f: \R \to \R$ definida implicitamente por $F$ à volta de $(a,b)$, se e só se $\frac{\partial F}{\partial y} \neq 0$. Se esse for o caso, temos que:
-$$
-f'(a) = -\frac{\frac{\partial F}{\partial x}(a,b)}{\frac{\partial F}{\partial y}(a,b)}
-$$
-    \item Para uma função $F:\R^3 \to \R$ de classe $C^1$ e $(a,b,c) \subset \R^3$ tal que $F(a,b,c)=0$, existe uma função $f: \R^2 \to \R$ definida implicitamente por $F$ à volta de $(a,b,c)$, se e só se $\frac{\partial F}{\partial z} \neq 0$. Se esse for o caso, temos que:
-$$
-\frac{\partial f}{\partial x}(a,b) = -\frac{\frac{\partial F}{\partial x}(a,b,c)}{\frac{\partial F}{\partial z}(a,b,c)} \quad \text{ e } 
-\quad \frac{\partial f}{\partial y}(a,b) = -\frac{\frac{\partial F}{\partial x}(a,b,c)}{\frac{\partial F}{\partial z}(a,b,c)}
-$$
-    \item Para uma função $F:\R^3 \to \R^2$ de classe $C^1$ definida por duas funções coordenada $F_1$ e $F_2$, e $(a,b,c) \subset \R^3$ tal que $F(a,b,c)=(0,0)$, existe uma função $f: \R \to \R^2$ definida implicitamente por $F$ à volta de $(a,b,c)$, se e só se $\det D_{y,z}F(a,b,c) \neq 0$. Se esse for o caso, temos que:
-$$
-f'(a) = \begin{bmatrix} f_1(a) \\ f_2(a) \end{bmatrix} 
-= - \begin{bmatrix} 
-\frac{\partial F_1}{\partial y}(a,b,c) & \frac{\partial F_1}{\partial z}(a,b,c) \\
-\frac{\partial F_2}{\partial y}(a,b,c) & \frac{\partial F_2}{\partial z}(a,b,c) 
-\end{bmatrix}^{-1} \begin{bmatrix} \frac{\partial F_1}{\partial x}(a,b,c) \\
-\frac{\partial F_2}{\partial x}(a,b,c) \end{bmatrix}
-$$
+	\item \textbf{p-Volume de uma p-Variedade}\\
+	Para $\phi = 1$ o integral $\phi$ numa variedade $S$ dá
+	$$ vol_p(S) = \int_S \phi $$ 
+	\item \textbf{Massa de uma p-Variedade}\\
+	Se pensarmos em $\phi$ como a função densidade da variedade, o integral de de $\phi$ sobre a variedade dá a massa dessa variedade.
+	\item \textbf{Centro de Massa}\\
+	O centro de massa de uma p-variedade S com densidade $\phi$ é da forma $(\overline{x_1}, \overline{x_2}, \cdots, \overline{x_n})$ de forma que
+	$$ \overline{x_i} = \int_S \frac{1}{M}x_i \phi(x) $$
+	\item \textbf{Momento de Inércia}\\
+	Dada uma reta $L$ e a função $d_L(x)$ a distância do ponto $x \in \R^n$ à linha $L$. O momento de inércia de uma p-variedade a $L$ é o integral
+	$$ I_L = \int_S \phi(x)d_L^2(x) $$
+	em que $\phi$ é a função densidade de $S$.
 \end{itemize}
 
-\textbf{Teorema da função inversa}\\
-Seja $f:\R^n \to \R^n$ de classe $C^1$ e seja $a \in \R^n$. Se $|Df(a)| \neq 0$, então $f$ é invertível numa bola centrada em $a$ ($B_r(a)$) e a sua inversa tem derivada dada por
-$$
-Df^{-1}(y) = \left( Df(f^{-1}(y)) \right)^{-1}
-$$
-para todo o $y \in B_r(a)$.\\
-Notas:
-\begin{itemize}
-    \item Este teorema dá-nos apenas que a função será invertível na vizinhança, não nos permite tirar nenhum resultado sobre intervalos (mesmo que a função seja invertível em todos os pontos);
-    \item Se $|Df(a)|=0$, o teorema não tira conclusões nenhumas (a função pode ser invertível numa vizinhança de $a$ na mesma).
-\end{itemize}
+Nomeadamente, para 1-variedades, temos que $\sqrt{Dg(t)^T Dg(t)}$ é o produto vetorial $g'(t) \cdot g'(t) = ||g'(t)||$ e definimos este caso particular como um integral de linha:\\
+Se $\Gamma$ for uma linha definida por um caminho $\gamma : [a,b] \to \R^n$, ao integral de um campo escalar $\phi : \R^n \to \R$ sobre a variedade $\Gamma$ dá-se o nome de \textbf{integral de linha}:
+$$ \int_\Gamma \phi = \int_a^b \phi(\gamma(t)) || \gamma'(t) || \, dt $$
 
-\section{Variedades e Parametrizações}
-Uma \textbf{variedade} é a definição matemática que usamos para descrever uma superfície em $\R^n$. Em termos simples, dizemos que um conjunto é uma variedade se for definido localmente em todos os pontos por uma função em que o teorema da função implícita seja aplicável.
-
-Define-se $M \subset \R^n$ como uma variedade de dimensão $n-m$ se, para qualquer ponto $a \in M$, existe uma bola $B = B_\epsilon(a)$ centrada em $a$, tal que o conjunto $M \cap B$ pode ser descrito de uma das três seguintes maneiras:
-\begin{itemize}
-    \item Como conjunto de nível zero de uma função $F: \R^n \to \R^m$ ($m<n$) de classe $C^1$, definida num aberto tal que a matriz derivada $DF(x)$ tem característica $m$ para qualquer $x \in M \cap B$:
-$$ M \cap B = \{ x \in \R^n: F(x) = 0 \} $$
-note-se que a condição da característica é necessária para se poder aplicar o Teorema da Função Implícita (garante a invertibilidade da matriz das variáveis dependentes), o que é necessário para a variedade se poder descrever da seguinte forma;
-    \item Como gráfico de uma função $f: A \subset \R^{n-m} \to \R^m$ de classe $C^1$, definida num aberto:
-$$ M \cap B = \{ (u,v) \in \R^{n-m} \times \R^m: v=f(u), u \in A \} $$
-ou seja, se se poder aplicar o Teorema da Função Implícita a $F$ em torno de $a$;
-    \item Como a imagem de uma função $g: T \subset \R^{n-m} \to \R^n$ injetiva de classe $C^1$ em $T$ aberto definida tal que a matriz derivada $Dg(t)$ tem característica $n-m$ para qualquer $t \in T$:
-$$ M \cap B = \{ g(t), t \in T \} = g(T) $$
-à função $g$ dá-se o nome de \textbf{parametrização} de $M$ à volta de $a$.
-\end{itemize}
-Definimos agora:
-\begin{itemize}
-    \item Um vetor tangente a uma variedade como a um vetor que é tangente a uma linha que pertença a tal variedade;
-    \item \textbf{Espaço tangente} a uma variedade num ponto como o espaço gerado pelos vetores tangentes à variedade nesse ponto. Designa-se por $T_aM$;
-    \item \textbf{Espaço normal} a uma variedade como o espaço ortogonal ao espaço normal da variedade. Designado por $(T_aM)^\perp$.
-\end{itemize}
-Conjugando a primeira e a terceira definição de variedade observamos que $F(g(t))=0$ para todo o $t$ no domínio de $g$. Derivando, obtemos que
-$$ DF(g(t)) \cdot Dg(t) = 0 $$
-pelo que as colunas da matriz $Dg(t)$ são ortogonais às linhas da matriz $DF(g(t))$.\\
-Semelhantemente, para qualquer linha $\Gamma \subset M$ definida por um caminho $\gamma: \R \to \R^n$ de classe $C^1$ tal que $\gamma(0) = a$, temos que $F(\gamma(s))=0$ pelo que 
-$$ DF(\gamma(s))\gamma'(s) = 0 $$
-Considerando $t = t_0 \in T$ tal que $g(t_0) = a$ e $s = 0$, podemos deduzir que:
-\begin{itemize}
-    \item O espaço tangente de $M$ em $a$ é gerado pelos vetores coluna de $Dg(t_0)$;
-    \item O espaço normal de $M$ em $a$ é gerado pelos vetores linha da matriz $DF(a)$. Por outras palavras, esse espaço normal é gerado pelos vetores $\nabla F_1(a), \nabla F_2(a), \cdots, \nabla F_m(a)$.
-    \item O espaço tangente de uma variedade tem a mesma dimensão que ela;
-    \item Para definir o espaço normal/tangente de uma variedade, começamos por definir o espaço normal se a variedade for dada por um conjunto de nível e começamos pelo espaço tangente se for dada por uma parametrização. Em ambos os casos, podemos obter o espaço por determinar através da relação de ortogonalidade.
-\end{itemize}
-
-\section{Extremos Condicionados e Multiplicadores de Lagrange}
-Admita-se que queremos encontrar os extremos de uma função $f: \R^n \to \R$ de classe $C^1$ restringida a uma variedade $M = \{x \in \R^n : F(x) = 0 \}$ para alguma função $F: \R^n \to \R^m$ também de classe $C^1$.\\
-Seja $\gamma: \R \to \R^n$ um caminho que define uma linha $\Gamma \subset M$ tal que $\gamma(0) = a$ para algum ponto $a \in M$. Então, temos $f(a)$ ser um extremo de $f$ em $M$ equivale a $a$ ser um extremo de $f \circ \gamma: \R \to \R$:
-$$ \frac{\partial}{\partial t} f(\gamma(0)) = 0 \Leftrightarrow 
-   \nabla f(a) \cdot \gamma'(0) = 0 $$
-pelo que $\nabla f(a)$ pertence ao espaço normal de $M$ em $a$. Aos pontos que satisfazem a propriedade a cima dá-se o nome de \textbf{pontos críticos} de $f$ em $M$. Temos então que qualquer extremo de $f$ em $M$ será também um ponto crítico de $f$ em $M$ (note-se que, no entanto, nem todos os pontos críticos têm de ser extremos). Como este espaço é gerado pelos vetores $\nabla F_1(a)$, $\nabla F_2(a)$, ..., $\nabla F_m(a)$, temos que, os extremos de $f$ em $M$ são os pontos $x$ tais que:
-$$ \begin{cases}
-\nabla \left( f - \lambda_1 F_1 - \lambda_2 F_2 - \cdots - \lambda_m F_m \right) (x) = 0 \\
-F(x) = 0
-\end{cases} $$
-para escalares $\lambda_i \in \R$.
-
-\section{Integrais de Campos Escalares sobre Variedades}
-
-\section{Integrais de Campos Vetoriais}
+\subsection{Integrais de Campos Vetoriais}
 Seja $S \subset \R^n$ um aberto, $F: S \to \R^n$ um campo vetorial e $\Gamma \subset S$ uma linha descrita pelo caminho $\gamma: [a,b] \to \R^n$, de classe $C^1$. Ao integral
 $$ \int_\Gamma F \cdot d\gamma = \int_a^b F(\gamma(t))\cdot \gamma '(t) \, dt$$
 chama-se \textbf{integral de linha} do campo vetorial $F$ ao longo do caminho $\gamma$.
 
 Note-se que:
-$$ \int_\Gamma F \cdot dg = \int_a^b F(\gamma(t))\cdot \frac{\gamma'(t)}{||\gamma'(t)||} \cdot ||\gamma'(t)|| \, dt = \int_\Gamma F\cdot t \, d\phi $$
-em que $t$ é um vetor tangente a $\Gamma$ em cada ponto e $F \cdot t$ é um campo escalar, pelo que podemos integrar como visto no capítulo anterior.
+$$ \int_\Gamma F \cdot d\gamma = \int_a^b F(\gamma(t))\cdot \frac{\gamma'(t)}{||\gamma'(t)||} \cdot ||\gamma'(t)|| \, dt = \int_\Gamma F\cdot t  $$
+em que $t$ é um vetor tangente a $\Gamma$ em cada ponto e $F \cdot t$ é um campo escalar, pelo que obtemos um integral de linha de um campo escalar como introduzido no último capítulo.\\ 
 
 Observações:
 \begin{itemize}
-	\item Interpretando $F$ como a representação matemática duma força, o integral de linha de uma força ao longo de um caminho pode ser interpretado como o trabalho de uma força sobre uma partícula ao longo desse caminho.
-	\item Se $\gamma_1$ e $\gamma_2$ são duas parametrizações de $\Gamma$ que percorrem a curva no mesmo sentido, o integral $\int_\Gamma F \cdot d\gamma_1 = \int_\Gamma F \cdot d\gamma_2$, e se percorrerem $\Gamma$ em sentidos opostos então $\int_\Gamma F \cdot d\gamma_1 = \int_\Gamma F \cdot d\gamma_2$; 
+	\item Uma vez que a representação matemática de uma força física é um campo vetorial, o \textbf{trabalho} de uma força sobre uma partícula a descrever uma trajetória representada por uma linha $\Gamma$ é dada pelo integral de linha da força sobre essa linha; 
+	\item Se $\gamma_1$ e $\gamma_2$ são duas parametrizações de $\Gamma$ que percorrem a curva no mesmo sentido, o integral $\int_\Gamma F \cdot d\gamma_1 = \int_\Gamma F \cdot d\gamma_2$, e se percorrerem $\Gamma$ em sentidos opostos então $\int_\Gamma F \cdot d\gamma_1 = -\int_\Gamma F \cdot d\gamma_2$; 
 	\item O valor do integral de uma linha entre dois pontos depende da linha e não apenas dos extremos.
 \end{itemize}
 
-Dizemos que um campo vetorial é \textbf{conservativo} em $D$ se o seu integral sobre qualquer curva $\Gamma \subset D$ depende apenas dos extremos. Dizemos que $F:\R^n \to \R^n$ é \textbf{gradiente} se houver $\phi: \R^n \to \R$ de classe $C^1$ tal que $F = \nabla \phi$. Dizemos ainda que uma curva é \textbf{fechada} se os seus pontos inicial e final coincidirem. Os integrais sobre curvas fechadas são denotados por
-$$ \oint_\Gamma F \cdot \, d \gamma $$
-
-Nota: Um campo é conservativo se e só se o integral ao longo de qualquer curva fechada for 0.
-
-\textbf{Teorema Fundamental do Cálculo}
-Se $\varphi:\R^n \to \R$ é de $C^1$, e $\Gamma$ é uma linha definido por $\gamma:[a,b] \to \R^n$ com extremos $A$ e $B$, então:
-$$ \int_\Gamma \nabla \varphi \cdot dg = \varphi(B) - \varphi(A) $$
-Observa-se que:
+\subsection{Tipos de Campos Vetoriais e Teorema Fundamental do Cálculo}
+Por vezes calcular um integral de linha diretamente pela definição pode ser difícil. Há no entanto algumas propriedades dos campos vetoriais que nos podem facilitar a vida. Definimos então:
 \begin{itemize}
-	\item Qualquer campo gradiente é conservativo;
-	\item O integral de um campo gradiente sobre uma curva fechada é nulo.
+	\item Dizemos que uma curva é \textbf{fechada} se os seus pontos inicial e final coincidirem. Os integrais sobre curvas fechadas são denotados por
+$$ \oint_\Gamma F \cdot \, d \gamma $$
+	\item Dizemos que um caminho é \textbf{regular} se for de classe $C^1$;
+	\item Dizemos que um campo vetorial é \textbf{conservativo} num domínio $D$ se o seu integral sobre qualquer curva em $D$ depende apenas dos extremos;
+	\item Dizemos que um campo vetorial $F: \R^n \to \R^n$ é \textbf{gradiente} se houver $\phi: \R^n \to \R$ de classe $C^1$ tal que $F = \nabla \phi$. Nesse caso dizemos que $\phi$ é o \textbf{potencial escalar} de $F$;
+	\item Dizemos que um campo $F: \R^n \to \R^n$ é \textbf{fechado} se satisfizer:
+	$$ \frac{\partial F_i}{\partial x_j} = \frac{\partial F_j}{\partial x_i} $$
 \end{itemize}
 
-Definimos agora um campo $F: \R^n \to \R^n$ como \textbf{fechado} se satisfizer:
-$$ \frac{\partial F_i}{\partial x_j} = \frac{\partial F_i}{\partial x_j} $$
+\textbf{Teorema Fundamental do Cálculo}\\
+Se $\varphi:\R^n \to \R$ de classe $C^1$ estvire definida na linha $\Gamma$ definida por $\gamma:[a,b] \to \R^n$ com extremos $A = \varphi(a)$ e $B = \varphi(b)$, então:
+$$ \int_\Gamma \nabla \varphi \cdot dg = \varphi(B) - \varphi(A) $$
+A partir do teorema a cima e das relações a cima podemos concluir que:
+\begin{itemize}
+	\item Um campo é \textbf{gradiente se e só se for conservativo};
+	\item Qualquer campo \textbf{gradiente/conservativo é fechado};
+	\item Se $F$ for um campo conservativo, segundo o TFC temos que
+	$$ \oint_\Gamma F \cdot \gamma = 0 $$
+\end{itemize}
 
-Temos que qualquer campo gradiente é fechado.
+O cálculo do trabalho de um campo gradiente fica assim muito simplificado, desde que seja numa curva fechada, ou o seu potencial seja conhecido.
 
-\textbf{Teorema}: Qualquer campo conservativo é gradiente.
+O potencial de um campo vetorial é obtido primitivando as funções coordenadas desse campo. 
 
-Temos então que \textbf{gradiente} $\Leftrightarrow$ \textbf{conservativo} e \textbf{gradiente/conservativo} $\Rightarrow$ \textbf{fechado}.
+Em relação às definições a cima, fica apenas a faltar saber em que circunstâncias é que um campo fechado é conservativo.
 
-Note-se que se $F: D \to \R^2$ for um campo vetorial fechado, então $\oint_{\delta D} = 0$, pelo que um campo fechado será conservativo nas curvas que delimitam regiões onde esse campo esteja definido.
+Para isto definimos duas curvas $C_1$ e $C_2$ num domínio $D$ como \textbf{homotópicas} se e só se for possível obter $C_2$ através de uma deformação de $C_1$, se essa deformação mantiver todos os pontos de $C_2$ em $D$.
 
-Definimos agora duas curvas $C_1$ e $C_2$ num domínio $D$ como \textbf{homotópicas} se e só se for possível obter $C_2$ através de uma deformação de $C_1$, se essa deformação mantiver todos os pontos de $C_2$ em $D$.
+Temos que o integral de linha de um campo vetorial fechado sobre duas curvas fechadas homotópicas é o mesmo.
 
 Definimos agoa um conjunto $D$ como \textbf{simplesmente conexo} se qualquer curva em $D$ for homotópica a um ponto.
 
-Com esta definição podemos agora afirmar que qualquer campo fechado definido num domínio simplesmente conexo é também gradiente.
+Temos então que qualquer campo \textbf{fechado num domínio simplesmente conexo é gradiente}.
 
-\section{Teoremas de Green, Stokes e Divergência}
-\textbf{Teorema de Green}\\
-Se $F=(P,Q): \R^2 \to \R^2$ for de classe $C^1$ num domínio que contém $\overline{D}$, então
+\subsection{Teorema de Green}
+Se $F=(F_1,F_2): A \subset \R^2 \to \R^2$ for de classe $C^1$ num domínio quase regular $\overline{D} \subset A$, então
 $$
 \oint_{\partial D} F \cdot dg = \iint_D \frac{\partial F_2}{\partial x} - \frac{\partial F_1}{\partial y} dx dy
 $$
+em que a linha $\partial D$ é percorrida no sentido canónico: o sentido tal que $D$ fica à esquerda de uma trajetória segundo esse sentido.
 
-\textbf{Teorema da Divergência}\\
+É evidente que se $F$ for um campo fechado, o seu integral sobre uma linha fechada que limita um domínio regular é nula. De forma semelhante, podemos concluir a partir deste teorema que o trabalho de um campo vetorial de classe $C^1$ e fechado sobre duas curvas num domínio regular, percorridas no mesmo sentido, é igual.
+
+\subsection{Teorema da Divergência}
 Definimos uma variedade bi-dimensional $S \subset \R^3$ como \textbf{orientável} se existir um campo vetorial $n: A \subset \R^3 \to \R^3$ contínuo tal que $n(x)$ é um vetório unitário normal a $S$ ($S \subset A$). Diz-se que $n$ é ou define uma \textbf{orientação de $S$}. Nota-se que qualquer variedade bi-dimensional é orientável localmente.
 
 Dada qualquer variedade bi-dimensional $S \subset \R^3$ com orientação $n$ e definida por uma parametrização $g:T \subset \R^2 \to \R^3$ e $F: A \to \R^3$ um campo vetorial definido num aberto tal que $S \subset A$, definimos o \textbf{fluxo de $F$ em $S$} como o valor do integral
@@ -682,19 +704,19 @@ $$ \int_S F \cdot n
 \frac{\partial g}{\partial v} \right) du dv$$
 
 Definimos agora a \textbf{divergência} de um campo vetorial $F: S \to \R^3$ de classe $C^1$ no aberto $S$ como o campo escalar
-$$ \text{div } F = \frac{\partial F_1}{\partial x} + \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z} $$
+$$ \text{div } F = \nabla \cdot F = \frac{\partial F_1}{\partial x} + \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z} $$
 Definimos ainda um \textbf{domínio regular} $D \subset \R^3$ se e só a sua fronteira $\partial D$ é uma união finita de superfícies orientáveis.\\
 Com estas definições, enunciamos então o \textbf{Teorema da divergência}:\\
 Se $D \subset \R^3$ for um domínio regular e $n$ a normal em $\partial D$ que aponta para fora de $D$, então
 $$ \int_{\partial D} F \cdot n = \iiint_D \text{div } F $$
 
-\textbf{Teorema de Stokes}\\
+\subsection{Teorema de Stokes}
 Seja $S$ uma superfície em $\R^3$ parametrizada por $g: D \to \R^3$, tal que $g$ está definida num aberto $A \subset \R^2$ tal que $\overline{D} \subset A$. Se $\partial D$ for uma linha simples e fechada descrita por um caminho $\gamma: [a,b] \to \R^2$, definimos o \textbf{bordo} da superfície $S$ à linha descrita pelo caminho $g \circ \gamma$, ou seja
 $$ \partial S = g(\partial D) = g(\gamma([a,b])) $$
 Diz-se que a orientação de percurso da linha $\partial X$ é \textbf{compatível} com a orientação de $S$ se satisfizer a regra da mão direita.
 
 Definimos ainda o \textbf{rotacional} de $F$ como o campo vetorial:
-$$ \text{rot} F = \left( 
+$$ \text{rot} F = \nabla \times F = \left( 
 \frac{\partial F_3}{\partial y} - \frac{\partial F_2}{\partial z},
 \frac{\partial F_1}{\partial z} - \frac{\partial F_3}{\partial x},
 \frac{\partial F_2}{\partial x} - \frac{\partial F_1}{\partial y} 
@@ -715,7 +737,7 @@ Observamos que o Teorema de Stokes pode ser então usado para três tipos de pro
 Vamos então focar-nos na última das três aplicações indicadas a cima do teorema. Dizemos que o campo vetorial $A: \Omega \subset \R^3 \to \R^3$ é um \textbf{potencial vetorial} de $F: \Omega \subset \R^3 \to \R^3$ ($\Omega$ é um aberto) se e só se $F = \text{rot} A$.\\
 Observando que $\text{div}(\text{rot}(F)) = 0$, para qualquer campo vetorial $F$, verificamos que $\text{div}F = 0$ é uma condição necessária para que $F$ tenha um potencial vetorial.\\
 Definimos um conjunto $D \subset \R^3$ como \textbf{estrelado} ou \textbf{em estrela} se houver um ponto $a \in A$ tal que o segmento $ab$ está contido em $A$ para todo o $b \in A$.\\
-Temos que qualquer campo vetorial $G: A \subset \R^3 \to \R^3$ com divergência nula e domínio aberto e estrela, então $G$ tem um potencial vetorial.\\
+Temos que qualquer campo vetorial $G: A \subset \R^3 \to \R^3$ com divergência nula e domínio aberto e estrela tem um potencial vetorial.\\
 Note-se que qualquer conjunto estrelado é simplesmente conexo, mas a implicação contrária não se mantém.\\
 Temos então de arranjar uma maneira de calcular o potencial vetorial de um campo vetorial.\\
 Para isto observamos que, como $\nabla \phi$ é fechado para qualquer $\phi: \Omega \to \R$ de classe $C^2$, então rot$(\nabla \phi) = 0$ e 
