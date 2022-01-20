@@ -288,15 +288,15 @@ $$
 Aos pontos que satisfazem esta propriedade dá-se o nome de \textbf{pontos críticos} de $f$. Note-se que nem todos os pontos críticos são extremos da função. Aos pontos críticos de $f$ que não são extremos dessa função dá-se o nome de \textbf{pontos de sela}. Pode-se no entanto dizer que o conjunto dos extremos no interior do domínio de uma função está contido no conjunto dos pontos críticos dessa função.\\
 Torna-se então necessário arranjar um método de distinguir os extremos dos pontos de sela de uma função. Para funções em $\R$ isto podia ser feito através do Teorema de Taylor. Voltamos então a restringir a análise da função aos valores que esta toma segundo uma reta, ou seja, voltamos a considerar a função $\gamma: \R \to \R^n$ definida por $\gamma (t) = a + th$, de forma que $f$ tem polinómio de Taylor segundo a reta definida por $h$:
 $$
-f(a+th) = f(a) + f'(a)t + \frac{1}{2!}f''(a)t^2 + ... + \frac{1}{n!} f^{(n)}(a)t^n + r_{n+1}(t)
+f(a+th) = f(a) + \frac{\partial f}{\partial h}(a)t + \frac{1}{2!}\frac{\partial ^2 f}{\partial h^2}(a) t^2 + ... + \frac{1}{n!} \frac{\partial ^n f}{\partial h^n}(a)t^n + r_{n+1}(t)
 $$
 sendo que
 $$
-f'(a) = \sum_{j=1}^n \frac{\partial f}{\partial x_j}(a) h_j = \nabla f(a) h  \quad \quad \quad \quad 
-f''(a) = \sum_{k=1}^n \sum_{j=1}^n \frac{\partial ^2 f}{\partial x_j x_k} (a) h_j h_k 
+\frac{\partial f}{\partial h}(a) = \sum_{j=1}^n \frac{\partial f}{\partial x_j}(a) h_j = \nabla f(a) h  \quad \quad \quad \quad 
+\frac{\partial ^2 f}{\partial h^2}(a) = \sum_{k=1}^n \sum_{j=1}^n \frac{\partial ^2 f}{\partial x_j x_k} (a) h_j h_k 
 $$
 $$
-f'''(a) = \sum_{k,i,j =1}^n \frac{\partial ^3 f}{\partial x_i x_j x_k} (a) h_i h_j h_k
+\frac{\partial ^3 f}{\partial h^3}(a) = \sum_{k,i,j =1}^n \frac{\partial ^3 f}{\partial x_i x_j x_k} (a) h_i h_j h_k
 $$
 e por aí em diante.\\
 Note-se que a segunda derivada em $a$ pode ser escrita como um produto matricial $h^T \cdot D^2 f(a) \cdot h$ em que:
@@ -318,11 +318,11 @@ A esta matriz dá-se o nome de \textbf{matriz Hessiana} de $f$ no ponto $a$. Est
 \end{itemize}
 Então, para um ponto crítico de $f$, temos que:
 $$
-\frac{f(a+th)-f(a)}{t^2} = \frac{1}{2!}f''(a) + \frac{r_3(t)}{t^2} \Rightarrow \lim_{t \to 0} \frac{f(a+th)-f(a)}{t^2} = \frac{1}{2!}f''(a)
+\frac{f(a+th)-f(a)}{t^2} = \frac{1}{2!}\frac{\partial ^2 f}{\partial h^2}(a) + \frac{r_3(t)}{t^2} \Rightarrow \lim_{t \to 0} \frac{f(a+th)-f(a)}{t^2} = \frac{1}{2!} \frac{\partial ^2 f}{\partial h^2}
 $$
 pelo que $f(a+h)-f(a)$ tem o mesmo sinal que a segunda derivada de $f$. Como, segundo o teorema de Schwartz, a matriz Hessiana é sempre simétrica, e temos que a matriz Hessiana é diagonalizável. Então, há valor próprio $\lambda$ e vetor próprio $h$ associado a $\lambda$ tais que:
 $$
-f''(a) = h^T \cdot D^2 (a) \cdot h = h^T \cdot \lambda h = \lambda ||h||^2
+\frac{\partial ^2 f}{\partial h^2}(a) = h^T \cdot D^2 (a) \cdot h = h^T \cdot \lambda h = \lambda ||h||^2
 $$
 Pelo que, o sinal de $f(a+h)-f(a)$ é dado pelo sinal dos valores próprios da matriz Hessiana de $f$. Concluímos então que para $a$ no interior do domínio de um campo escalar $f$:
 \begin{itemize}
@@ -344,7 +344,7 @@ para todo o $y \in B_r(a)$ e $x \in \R^n$ tal que $f(x) = y$.\\
 Notas:
 \begin{itemize}
     \item Este teorema dá-nos apenas que a função será invertível na vizinhança, não nos permite tirar nenhum resultado sobre intervalos (mesmo que a função seja invertível em todos os pontos);
-    \item Se $|Df(a)|=0$, o teorema não tira conclusões nenhumas (a função pode ser invertível numa vizinhança de $a$ na mesma - pensar nas funções $x^2$ e $x^3$).
+    \item Se $|Df(a)|=0$, o teorema não tira conclusões nenhumas (a função pode ser invertível numa vizinhança de $a$ na mesma - pensar nas funções $x^2$ e $x^3$, naorigem).
 \end{itemize}
 
 \subsection{Teorema da Função Implícita}
@@ -408,7 +408,7 @@ $$ M \cap B = \{ g(t), t \in T \} = g(T) $$
 Definimos agora:
 \begin{itemize}
     \item Um vetor tangente a uma variedade como a um vetor que é tangente a uma linha que pertença a tal variedade;
-    \item \textbf{Espaço tangente} a uma variedade num ponto como o espaço gerado pelos vetores tangentes à variedade nesse ponto. Este espaço tem a mesma dimensão que a variedade e designa-se por $T_aM$;
+    \item \textbf{Espaço tangente} a uma variedade num ponto como o espaço constituído por todos os vetores tangentes à variedade nesse ponto. Este espaço tem a mesma dimensão que a variedade e designa-se por $T_aM$;
     \item \textbf{Espaço normal} a uma variedade como o espaço ortogonal ao espaço tangente da variedade. Designado por $(T_aM)^\perp$.
 \end{itemize}
 Conjugando a primeira e a terceira definição de variedade observamos que $F(g(t))=0$ para todo o $t$ no domínio de $g$. Derivando, obtemos que
@@ -567,7 +567,7 @@ Defina-se \textbf{mudança de variável} como uma função injetiva $\varphi: D 
 \textbf{Teorema da mudança de variável}:\\
 Seja $\varphi: D \to \R^n$ uma mudança de variável de domínio aberto limitado tal que $f$ é um campo escalar de domínio $X=\varphi(D)$. Então
 $$
-\int_X f(x) \, dx = \int_D f(g(t)) |\text{det} D \varphi(t)| \, dt
+\int_X f(x) \, dx = \int_D f(\varphi(t)) |\text{det} D \varphi(t)| \, dt
 $$
 Este teorema é muito útil para aproveitar certas simetrias da função $f$. Mudanças de variáveis comuns são:
 \begin{itemize}
@@ -641,6 +641,7 @@ Note-se que:
 $$ \int_\Gamma F \cdot d\gamma = \int_a^b F(\gamma(t))\cdot \frac{\gamma'(t)}{||\gamma'(t)||} \cdot ||\gamma'(t)|| \, dt = \int_\Gamma F\cdot t  $$
 em que $t$ é um vetor tangente a $\Gamma$ em cada ponto e $F \cdot t$ é um campo escalar, pelo que obtemos um integral de linha de um campo escalar como introduzido no último capítulo.\\ 
 
+\newpage
 Observações:
 \begin{itemize}
 	\item Uma vez que a representação matemática de uma força física é um campo vetorial, o \textbf{trabalho} de uma força sobre uma partícula a descrever uma trajetória representada por uma linha $\Gamma$ é dada pelo integral de linha da força sobre essa linha; 
